@@ -1,0 +1,40 @@
+body{
+	background: #effff;
+	font-family: Arial;
+	font-size: 12px;
+
+}
+
+table{
+	width: 100%;
+	font-size:12px;
+	margin: 0 auto;
+}
+
+td, tr{
+	padding: 6px 5px;
+}
+
+th{
+	background: #09f;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.lc{
+	text-align: right;
+	font-family: tahoma;
+	font-weight: bold;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+.clr{
+	clear: both;
+}
