@@ -1,0 +1,97 @@
+﻿/* Các xử lý định dạng cho Layout.html*/
+
+@import url('common.css'); 
+
+#main{
+	width: 1200px;
+	height: auto;
+	margin: 10px auto;
+
+}
+
+.logo{
+	width: 400px;
+	height: 60px;
+	background: url("../imgs/benhvienfv.gif") no-repeat;
+	float: left;
+}
+
+.acc{
+	width: 500px;
+	height: 60px;
+	background: #ddd;
+	float: right;
+}
+
+.acc h3{
+	background: #3C8DBC;
+	color: #fff;
+	font: normal 12px tahoma;
+	margin-bottom: 10px;
+	padding: 6px;
+}
+
+.menu{
+	width: 190px;
+	height: auto;
+	background: #00819D;	
+	margin: 10px 0;
+	float: left;
+	text-align: justify;
+}
+
+.menu a{
+	text-decoration: none;
+	color: #fff;
+}
+
+.menu h3{
+	display: block;
+	font: bold 12px tahoma;
+	padding: 8px 2px;
+	border-bottom: 1px solid #ddd;
+
+}
+
+.menu h3:hover{
+	background: #fff;
+	color: #3C8DBC;
+}
+
+.view{
+	width: 1000px;
+	height: auto;
+	float: right;
+	background: #fff;
+	margin: 10px 0;
+}
+
+.view table{
+	border-left: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+}
+
+.view table th{
+	background: #3C8DBC;
+}
+
+.view table th, .view table td{
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+
+.even{
+	background: #eef;
+}
+
+.NO, .ED, .ID{
+	text-align: center;
+	width: 40px;
+}
+
+.footer{
+	height: auto;
+	background: #666;
+	color: #eee;
+	padding: 10px;
+}

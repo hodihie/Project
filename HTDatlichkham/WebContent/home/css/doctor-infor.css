@@ -1,0 +1,32 @@
+@import url('common.css');
+
+.doctor-display{
+	width: 650px;	
+	height: auto;	
+}
+
+.doctor-img{
+	width: 155px;
+	float: left;
+	margin: 5px 5px 5px 25px;
+}
+
+
+.doctor-img img{
+	margin-left:5px;
+	width: 150px;
+	height: 200px;
+}
+.doctor-infor{
+	width: 425px;
+	float: right;
+	margin: 5px 5px 5px 25px;
+}
+
+.doctor-infor label{
+	color: #2493D2;
+	font-weight: bold;
+}
+.doctor-infor p{
+	text-align: justify;
+}

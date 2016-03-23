@@ -1,0 +1,16 @@
+﻿/*Thừa kế các định dạng chuẩn*/
+@import url('common.css');
+
+#loginview {
+	width: 400px;
+	height: auto;
+	background: #fff;
+	border: 1px solid #666;
+	margin: 0 auto;
+	margin-top: 200px;
+	border-radius: 5px;
+}
+
+body {
+	background: url("../imgs/login_bg.jpg");
+}
