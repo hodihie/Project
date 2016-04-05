@@ -3,7 +3,10 @@
  */
 package haui.library;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.ServletRequest;
@@ -63,18 +66,6 @@ public class Utilities {
 		}
 
 		return value;
-	}
-
-	// lay ngay he thong
-	public static String getDate() {
-		String format = "dd/MM/yyy";
-		SimpleDateFormat sdf = new SimpleDateFormat(format);
-		Date date = new Date();
-		return sdf.format(date);
-	}
-	
-	public static void main(String[] args) {
-		System.out.println(getDate());
 	}
 
 }
