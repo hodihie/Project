@@ -73,8 +73,7 @@ public class ApointmentModel {
 					item.setApointment_id(rs.getInt("apointment_id"));					
 					item.setApointment_doctor_id(rs.getInt("apointment_doctor_id"));
 					item.setApointment_created_date(rs.getString("apointment_created_date"));
-					item.setApointment_date(rs.getString("apointment_date"));
-					item.setApointment_time(rs.getString("apointment_time"));
+					item.setApointment_date(rs.getString("apointment_date"));					
 				}
 				rs.close();
 			} catch (SQLException e) {
@@ -98,8 +97,7 @@ public class ApointmentModel {
 					item.setApointment_id(rs.getInt("apointment_id"));					
 					item.setApointment_doctor_id(rs.getInt("apointment_doctor_id"));
 					item.setApointment_created_date(rs.getString("apointment_created_date"));
-					item.setApointment_date(rs.getString("apointment_date"));
-					item.setApointment_time(rs.getString("apointment_time"));
+					item.setApointment_date(rs.getString("apointment_date"));					
 					items.add(item);
 				}
 				rs.close();

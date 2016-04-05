@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import haui.ConnectionPool;
 import haui.gui.customer.CustomerControl;
 import haui.gui.doctor.DoctorControl;
+import haui.library.DateUtils;
 import haui.library.Utilities;
 import haui.objects.ApointmentObject;
 import haui.objects.CustomerObject;
@@ -55,7 +56,6 @@ public class MakeApointmentAction extends HttpServlet {
 		// String stSpecialityId = request.getParameter("slcSpeciality");
 		int doctorId = Utilities.getIntParam(request, "slcDoctor");
 		String date = request.getParameter("txtDate");
-		String time = request.getParameter("slcTime");
 		String symptom = request.getParameter("txtSymptom");
 		String name = request.getParameter("txtName");
 		String stGender = request.getParameter("rdGender");
@@ -64,14 +64,13 @@ public class MakeApointmentAction extends HttpServlet {
 		String phone = request.getParameter("txtPhone");
 		String email = request.getParameter("txtEmail");
 
-		if (doctorId>0&& !date.equalsIgnoreCase("") && !time.equalsIgnoreCase("")
-				&& !symptom.equalsIgnoreCase("") && !name.equalsIgnoreCase("") && !stGender.equalsIgnoreCase("")
-				&& !birthday.equalsIgnoreCase("") && !address.equalsIgnoreCase("") && !phone.equalsIgnoreCase("")
-				&& !email.equalsIgnoreCase("")) {
+		if (doctorId > 0 && !date.equalsIgnoreCase("") && !symptom.equalsIgnoreCase("") && !name.equalsIgnoreCase("")
+				&& !stGender.equalsIgnoreCase("") && !birthday.equalsIgnoreCase("") && !address.equalsIgnoreCase("")
+				&& !phone.equalsIgnoreCase("") && !email.equalsIgnoreCase("")) {
 
 			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 			String createdDate = sdf.format(new Date());
-				
+
 			short gender = Short.parseShort(stGender);
 
 			CustomerObject nCustomer = new CustomerObject();
@@ -97,12 +96,11 @@ public class MakeApointmentAction extends HttpServlet {
 			cc.releaseConnection();
 
 			// kiem tra ket qua thuc hien
-			if (cusId>0) {
+			if (cusId > 0) {
 				ApointmentObject nApointment = new ApointmentObject();
 				nApointment.setApointment_doctor_id(doctorId);
-				nApointment.setApointment_date(date);
-				nApointment.setApointment_customer_id(cusId);
-				nApointment.setApointment_time(time);
+				nApointment.setApointment_date(DateUtils.changeDateFormat(date, "dd/MM/yyyy HH:mm", "YYYYMMddHHmm"));
+				nApointment.setApointment_customer_id(cusId);				
 				nApointment.setApointment_symptom(Utilities.encode(symptom));
 				nApointment.setApointment_created_date(createdDate);
 
@@ -117,17 +115,17 @@ public class MakeApointmentAction extends HttpServlet {
 
 				// tra ve ket noi
 				ac.releaseConnection();
-				if (apt_result) {					
-					DoctorControl dc=new DoctorControl(cp);
+				if (apt_result) {
+					DoctorControl dc = new DoctorControl(cp);
 					if (cp == null) {
 						getServletContext().setAttribute("c_pool", dc.getConnectionPool());
 					}
-					DoctorObject doctor=dc.getDoctorObject(doctorId);
-					
-					HttpSession session=request.getSession();
-					session.setAttribute("customerCode", "BN"+cusId);
+					DoctorObject doctor = dc.getDoctorObject(doctorId);
+
+					HttpSession session = request.getSession();
+					session.setAttribute("customerCode", "BN" + cusId);
 					session.setAttribute("room", doctor.getDoctor_workroom());
-					String datetime=time+"-"+date;
+					String datetime = date;
 					session.setAttribute("datetime", datetime);
 					response.sendRedirect("/home/dat-lich-kham/xac-nhan/");
 				}
@@ -137,7 +135,5 @@ public class MakeApointmentAction extends HttpServlet {
 		}
 
 	}
-	
-	
 
 }

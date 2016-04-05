@@ -62,8 +62,8 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 	public boolean addApointment(ApointmentObject item) {
 		String sql = "INSERT INTO tblapointment(apointment_customer_id,apointment_doctor_id, ";
 		sql += "apointment_date, apointment_created_date, ";
-		sql += "apointment_time, apointment_symptom) ";
-		sql += "VALUE(?,?,?,?,?,?)";
+		sql += "apointment_symptom) ";
+		sql += "VALUE(?,?,?,?,?)";
 
 		try {
 			// bien dich
@@ -73,9 +73,8 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 			pre.setInt(1, item.getApointment_customer_id());			
 			pre.setInt(2, item.getApointment_doctor_id());
 			pre.setString(3, item.getApointment_date());
-			pre.setString(4, item.getApointment_created_date());
-			pre.setString(5, item.getApointment_time());
-			pre.setString(6, item.getApointment_symptom());
+			pre.setString(4, item.getApointment_created_date());			
+			pre.setString(5, item.getApointment_symptom());
 
 			return this.add(pre);
 

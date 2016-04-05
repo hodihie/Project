@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import haui.ConnectionPool;
 import haui.ads.user.UserControl;
+import haui.library.DateUtils;
 import haui.library.Utilities;
 import haui.objects.ArticleObject;
 import haui.objects.UserObject;
@@ -230,7 +231,7 @@ public class ArticleAE extends HttpServlet {
 			if (!articletitle.equalsIgnoreCase("")) {
 
 				// lay tiep du lieu
-				String createddate = Utilities.getDate();
+				String createddate = DateUtils.getDate();
 				String articlesummary = request
 						.getParameter("txtArticleSummary");
 				String articlecontent = request

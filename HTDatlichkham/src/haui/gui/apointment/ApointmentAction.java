@@ -13,6 +13,9 @@ import com.google.gson.Gson;
 
 import haui.ConnectionPool;
 import haui.gui.doctor.DoctorControl;
+import haui.library.DateUtils;
+import haui.library.StringUltils;
+import haui.library.Utilities;
 import haui.objects.ApointmentObject;
 import haui.objects.DoctorObject;
 
@@ -29,7 +32,7 @@ public class ApointmentAction extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public ApointmentAction() {
-		super();		
+		super();
 	}
 
 	/**
@@ -66,14 +69,12 @@ public class ApointmentAction extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType(CONTENT_TYPE);
-		
-		//kiem tra trung lich hen
+
+		// kiem tra trung lich hen
 		int doctorid = Integer.parseInt(request.getParameter("doctorid"));
-		String date = request.getParameter("date");
-		String time = request.getParameter("time");
 
 		String json = null;
-		String st = "";
+		String date = "";		
 
 		ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("c_pool");
 		ApointmentControl ac = new ApointmentControl(cp);
@@ -84,17 +85,17 @@ public class ApointmentAction extends HttpServlet {
 		ApointmentObject similar = new ApointmentObject();
 		ArrayList<ApointmentObject> items = ac.getApointmentObjects(similar);
 		for (ApointmentObject item : items) {
-			if (item.getApointment_doctor_id() == doctorid && item.getApointment_date().equalsIgnoreCase(date)
-					&& item.getApointment_time().equalsIgnoreCase(time)) {
-				st = "error";
+			if (item.getApointment_doctor_id() == doctorid && StringUltils.isEmpty(date)) {
+				date = item.getApointment_date();				
+			} else if (item.getApointment_doctor_id() == doctorid && !StringUltils.isEmpty(date)) {
+				date = DateUtils.getEarlierDate(date, item.getApointment_date());				
 			}
-		}
+		}			
 
-		json = new Gson().toJson(st);
+		json = new Gson().toJson(DateUtils.getDateFormat(DateUtils.makeDate(date), "dd/MM/yyyy HH:mm"));
 		response.setContentType("application/json");
-		response.getWriter().write(json);	
-		
-		
+		response.getWriter().write(json);
+
 	}
 
 }
