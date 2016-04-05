@@ -52,7 +52,7 @@ public class DateUtils {
 			return null;
 		}
 
-		return StringToMakeDate(s, "YYYYMMddHHmm");
+		return StringToMakeDate(s, "yyyyMMddHHmm");
 
 	}
 
