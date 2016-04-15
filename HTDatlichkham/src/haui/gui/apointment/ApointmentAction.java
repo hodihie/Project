@@ -71,10 +71,13 @@ public class ApointmentAction extends HttpServlet {
 		response.setContentType(CONTENT_TYPE);
 
 		// kiem tra trung lich hen
-		int doctorid = Integer.parseInt(request.getParameter("doctorid"));
+		short doctorid = Utilities.getShortParam(request, "doctorid");
+		int duration = Utilities.getIntParam(request, "duration");
+		System.out.println(duration);
 
 		String json = null;
-		String date = "";		
+		String date = null;
+		String currentDate = DateUtils.getCurrentDateTime();
 
 		ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("c_pool");
 		ApointmentControl ac = new ApointmentControl(cp);
@@ -82,15 +85,22 @@ public class ApointmentAction extends HttpServlet {
 			getServletContext().setAttribute("c_pool", ac.getConnectionPool());
 		}
 		// tao doi tuong bo loc
-		ApointmentObject similar = new ApointmentObject();
-		ArrayList<ApointmentObject> items = ac.getApointmentObjects(similar);
-		for (ApointmentObject item : items) {
-			if (item.getApointment_doctor_id() == doctorid && StringUltils.isEmpty(date)) {
-				date = item.getApointment_date();				
-			} else if (item.getApointment_doctor_id() == doctorid && !StringUltils.isEmpty(date)) {
-				date = DateUtils.getEarlierDate(date, item.getApointment_date());				
+		ArrayList<ApointmentObject> items = ac.getNextApointmentsByDocId(doctorid, currentDate);
+		if (items.size() == 0) {
+			date = DateUtils.roundTime15M(DateUtils.addMintue(currentDate, duration / 60));
+		} else {
+			for (ApointmentObject item : items) {
+				if (StringUltils.isEmpty(date)) {
+					date = item.getApointment_date();
+				} else if (DateUtils.isEarlier(date, item.getApointment_date())) {
+					// date = DateUtils.getEarlierDate(date,
+					// item.getApointment_date());
+				}
 			}
-		}			
+
+			date = DateUtils.addMintue(date, duration / 60);
+
+		}
 
 		json = new Gson().toJson(DateUtils.getDateFormat(DateUtils.makeDate(date), "dd/MM/yyyy HH:mm"));
 		response.setContentType("application/json");

@@ -23,7 +23,6 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 	 */
 	public ApointmentImpl(ConnectionPool cp, String objectName) {
 		super(cp, objectName);
-		// TODO Auto-generated constructor stub
 	}
 
 	/*
@@ -46,9 +45,26 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 	@Override
 	public ResultSet getApointments(ApointmentObject similar) {
 		String sql = " SELECT * FROM tblapointment ";
-		sql += " ORDER BY apointment_date ASC, apointment_time ASC";
+		sql += " ORDER BY apointment_date ASC ";
 
 		return this.gets(sql);
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see haui.ads.apointment.Apointment
+	 * 
+	 */
+	@Override
+	public ResultSet getNextApointmentsByDocId(int docId, String currentDate) {
+		// TODO
+		String sql = " SELECT * FROM tblapointment where apointment_doctor_id=? and apointment_date > '" + currentDate
+				+ "' ";
+		sql += " ORDER BY apointment_date ASC ";
+
+		return this.gets(sql, docId);
 
 	}
 
@@ -70,10 +86,10 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 			PreparedStatement pre = this.con.prepareStatement(sql);
 
 			// Truyen gia tri
-			pre.setInt(1, item.getApointment_customer_id());			
+			pre.setInt(1, item.getApointment_customer_id());
 			pre.setInt(2, item.getApointment_doctor_id());
 			pre.setString(3, item.getApointment_date());
-			pre.setString(4, item.getApointment_created_date());			
+			pre.setString(4, item.getApointment_created_date());
 			pre.setString(5, item.getApointment_symptom());
 
 			return this.add(pre);
@@ -102,8 +118,8 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 			PreparedStatement pre = this.con.prepareStatement(sql);
 
 			// Truyen gia tri
-			pre.setInt(1, item.getApointment_customer_id());			
-			pre.setInt(2, item.getApointment_doctor_id());			
+			pre.setInt(1, item.getApointment_customer_id());
+			pre.setInt(2, item.getApointment_doctor_id());
 			pre.setString(3, item.getApointment_date());
 			pre.setString(4, item.getApointment_created_date());
 			pre.setString(5, item.getApointment_time());

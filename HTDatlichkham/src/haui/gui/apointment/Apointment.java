@@ -19,5 +19,6 @@ public interface Apointment extends ShareControl{
 	public boolean delApointment(ApointmentObject item);
 	
 	public ResultSet getApointment(int id);	
+	public ResultSet getNextApointmentsByDocId(int docId, String currentDate);	
 	public ResultSet getApointments(ApointmentObject similar);
 }

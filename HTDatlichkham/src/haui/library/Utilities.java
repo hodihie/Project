@@ -3,12 +3,6 @@
  */
 package haui.library;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 import javax.servlet.ServletRequest;
 
 import net.htmlparser.jericho.CharacterReference;
@@ -63,6 +57,16 @@ public class Utilities {
 		String strValue = request.getParameter(name);
 		if (strValue != null && !strValue.equalsIgnoreCase("")) {
 			value = Long.parseLong(strValue);
+		}
+
+		return value;
+	}
+	
+	public static double getDoubleParam(ServletRequest request, String name) {
+		double value = -1;
+		String strValue = request.getParameter(name);
+		if (strValue != null && !strValue.equalsIgnoreCase("")) {
+			value = Double.parseDouble(strValue);
 		}
 
 		return value;

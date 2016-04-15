@@ -64,6 +64,10 @@ public class ApointmentControl {
 	public ApointmentObject getApointmentObject(short id) {
 		return this.am.getApointmentObject(id);
 	}
+	
+	public ArrayList getNextApointmentsByDocId(short docId, String currentDate) {
+		return this.am.getApointmentObjectByDocId(docId, currentDate);
+	}
 
 	public ArrayList getApointmentObjects(ApointmentObject similar) {
 		return this.am.getApointmentObjects(similar);
@@ -78,7 +82,7 @@ public class ApointmentControl {
 		ac.releaseConnection();
 		// hien thi
 		for (ApointmentObject item : items) {
-			System.out.println(item.getApointment_date() + item.getApointment_time());
+			System.out.println(item.getApointment_date());
 		}
 	}
 
