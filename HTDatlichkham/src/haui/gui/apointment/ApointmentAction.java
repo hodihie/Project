@@ -76,8 +76,7 @@ public class ApointmentAction extends HttpServlet {
 		System.out.println(duration);
 
 		String json = null;
-		String date = null;
-		String currentDate = DateUtils.getCurrentDateTime();
+		String date = DateUtils.roundTime15M(DateUtils.addMintue("201604170700", duration / 60));
 
 		ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("c_pool");
 		ApointmentControl ac = new ApointmentControl(cp);
@@ -85,24 +84,37 @@ public class ApointmentAction extends HttpServlet {
 			getServletContext().setAttribute("c_pool", ac.getConnectionPool());
 		}
 		// tao doi tuong bo loc
-		ArrayList<ApointmentObject> items = ac.getNextApointmentsByDocId(doctorid, currentDate);
-		if (items.size() == 0) {
-			date = DateUtils.roundTime15M(DateUtils.addMintue(currentDate, duration / 60));
+		ArrayList<ApointmentObject> items = ac.getNextApointmentsByDocId(doctorid, date);
+		ArrayList<String> dateList = new ArrayList<String>();
+		int apointmentListLeng = items.size();
+		if (apointmentListLeng == 0) {
+			dateList.add(date);
 		} else {
-			for (ApointmentObject item : items) {
-				if (StringUltils.isEmpty(date)) {
-					date = item.getApointment_date();
-				} else if (DateUtils.isEarlier(date, item.getApointment_date())) {
-					// date = DateUtils.getEarlierDate(date,
-					// item.getApointment_date());
+			String temp = DateUtils.addMintue(items.get(0).getApointment_date(), 15);
+
+			String flag = null;
+			int j;
+			int number = 0;
+			while (number < 5) {
+				j = 0;
+				while (j < apointmentListLeng) {
+					flag = "0";
+					if (temp.equals(items.get(j).getApointment_date())) {
+						flag = "1";
+						break;
+					}
+					j++;
 				}
+				if ("0".equals(flag)) {
+					dateList.add(temp);
+					number++;
+				}
+				temp = DateUtils.addMintue(temp, 15);
+
 			}
-
-			date = DateUtils.addMintue(date, duration / 60);
-
 		}
 
-		json = new Gson().toJson(DateUtils.getDateFormat(DateUtils.makeDate(date), "dd/MM/yyyy HH:mm"));
+		json = new Gson().toJson(DateUtils.getDateFormat(DateUtils.makeDate(dateList.get(0)), "dd/MM/yyyy HH:mm"));
 		response.setContentType("application/json");
 		response.getWriter().write(json);
 
