@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 
 import haui.ConnectionPool;
 import haui.gui.doctor.DoctorControl;
+import haui.library.ApointmentConstants;
 import haui.library.DateUtils;
 import haui.library.StringUltils;
 import haui.library.Utilities;
@@ -76,6 +77,7 @@ public class ApointmentAction extends HttpServlet {
 		System.out.println(duration);
 
 		String json = null;
+		// TODO: for test
 		String date = DateUtils.roundTime15M(DateUtils.addMintue("201604170700", duration / 60));
 
 		ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("c_pool");
@@ -86,35 +88,36 @@ public class ApointmentAction extends HttpServlet {
 		// tao doi tuong bo loc
 		ArrayList<ApointmentObject> items = ac.getNextApointmentsByDocId(doctorid, date);
 		ArrayList<String> dateList = new ArrayList<String>();
-		int apointmentListLeng = items.size();
-		if (apointmentListLeng == 0) {
+		int apointmentListLength = items.size();
+		if (apointmentListLength == 0) {
 			dateList.add(date);
 		} else {
-			String temp = DateUtils.addMintue(items.get(0).getApointment_date(), 15);
+			String temp = DateUtils.addMintue(items.get(0).getApointment_date(), ApointmentConstants.APOINTMENT_LENGTH);
 
 			String flag = null;
-			int j;
+			int flag2 = 0;
+			int j = 0;
 			int number = 0;
 			while (number < 5) {
-				j = 0;
-				while (j < apointmentListLeng) {
+				j = flag2;
+				while (j < apointmentListLength) {
 					flag = "0";
 					if (temp.equals(items.get(j).getApointment_date())) {
 						flag = "1";
+						flag2 = j;
 						break;
 					}
 					j++;
 				}
 				if ("0".equals(flag)) {
-					dateList.add(temp);
+					dateList.add(DateUtils.getDateFormat(DateUtils.makeDate(temp), "dd/MM/yyyy HH:mm"));
 					number++;
 				}
-				temp = DateUtils.addMintue(temp, 15);
-
+				temp = DateUtils.addMintue(temp, ApointmentConstants.APOINTMENT_LENGTH);
 			}
 		}
 
-		json = new Gson().toJson(DateUtils.getDateFormat(DateUtils.makeDate(dateList.get(0)), "dd/MM/yyyy HH:mm"));
+		json = new Gson().toJson(dateList);
 		response.setContentType("application/json");
 		response.getWriter().write(json);
 
