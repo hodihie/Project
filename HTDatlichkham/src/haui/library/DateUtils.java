@@ -166,7 +166,7 @@ public class DateUtils {
 
 		int unroundedMinutes = cal.get(Calendar.MINUTE);
 		int mod = unroundedMinutes % 15;
-		cal.add(Calendar.MINUTE, mod < 8 ? -mod : (15 - mod));
+		cal.add(Calendar.MINUTE, (15 - mod));
 
 		resultStr = df.format(cal.getTime());
 
