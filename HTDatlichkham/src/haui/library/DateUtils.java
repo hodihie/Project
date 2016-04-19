@@ -18,6 +18,7 @@ public class DateUtils {
 	public static String DD_MM_YYYY = "dd/MM/yyyy";
 	public static String YYYY_MM_DD_HH_MM = "yyyyMMddHHmm";
 	public static String YYYY_MM_DD_HH_MM_SS = "yyyyMMddHHmmss";
+	public static String DISPLAY_DATETIME = "dd/MM/yyyy HH:mm";
 
 	/**
 	 * 
@@ -108,10 +109,45 @@ public class DateUtils {
 		return getDateFormat(StringToMakeDate(sDate, oldFormat), newFormat);
 	}
 
-	public static boolean isEarlier(String sDate1, String sDate2) {
+	public static boolean isEalier(String sDate1, String sDate2) {		
 		Date date1 = makeDate(sDate1);
 		Date date2 = makeDate(sDate2);
 		return date1.before(date2);
+	}
+
+	public static boolean isAfter(String sDate1, String sDate2) {		
+		Date date1 = makeDate(sDate1);
+		Date date2 = makeDate(sDate2);
+		return date1.after(date2);
+	}
+
+	public static String addDay(String sYYYYMMDDHHMM, int day) {
+
+		if (StringUltils.isEmpty(sYYYYMMDDHHMM)) {
+			return null;
+		}
+
+		if (sYYYYMMDDHHMM.length() != 12) {
+			return null;
+		}
+
+		String resultStr = "";
+
+		Date date;
+
+		Calendar cal = Calendar.getInstance();
+
+		DateFormat df = new SimpleDateFormat(YYYY_MM_DD_HH_MM);
+
+		date = makeDate(sYYYYMMDDHHMM);
+
+		cal.setTime(date);
+
+		cal.add(Calendar.DAY_OF_MONTH, day);
+
+		resultStr = df.format(cal.getTime());
+
+		return resultStr;
 	}
 
 	public static String addMintue(String sYYYYMMDDHHMM, int minute) {
@@ -173,4 +209,35 @@ public class DateUtils {
 		return resultStr;
 	}
 
+	// get start work time
+	public static String getStartTime() {
+		String resultStr = "";
+		Calendar cal = Calendar.getInstance();
+		Date date = makeDate(getCurrentDateTime());
+		cal.setTime(date);
+		cal.set(Calendar.HOUR_OF_DAY, ApointmentConstants.START_HOUR);
+		cal.set(Calendar.MINUTE, ApointmentConstants.START_MINUTE);
+
+		DateFormat df = new SimpleDateFormat(YYYY_MM_DD_HH_MM);
+		resultStr = df.format(cal.getTime());
+		// return resultStr;
+		// TODO
+		return "201604170800";
+	}
+
+	// get end work time
+	public static String getEndTime() {
+		String resultStr = "";
+		Calendar cal = Calendar.getInstance();
+		Date date = makeDate(getCurrentDateTime());
+		cal.setTime(date);
+		cal.set(Calendar.HOUR_OF_DAY, ApointmentConstants.END_HOUR);
+		cal.set(Calendar.MINUTE, ApointmentConstants.END_MINUTE);
+
+		DateFormat df = new SimpleDateFormat(YYYY_MM_DD_HH_MM);
+		resultStr = df.format(cal.getTime());
+		// return resultStr;
+		// TODO
+		return "201604171730";
+	}
 }
