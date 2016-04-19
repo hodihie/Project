@@ -33,8 +33,7 @@ public class ApointmentLibrary {
 			tmp += "<td>" + cc.getCustomerObject(item.getApointment_customer_id()).getCustomer_fullname() + "</td>";
 			tmp += "<td class=NAME>" + dc.getDoctorObject(item.getApointment_doctor_id()).getDoctor_name() + "</td>";			
 			tmp += "<td>" + item.getApointment_created_date() + "</td>";			
-			tmp += "<td>" + item.getApointment_date() + "</td>";
-			tmp += "<td>" + item.getApointment_time() + "</td>";
+			tmp += "<td>" + item.getApointment_date() + "</td>";			
 			tmp += "<td>" + item.getApointment_symptom() + "</td>";
 
 			tmp += "<td class=ED><a href=\"/adv/apointment/del?id=" + item.getApointment_id()

@@ -75,8 +75,7 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 			pre.setInt(1, item.getApointment_customer_id());			
 			pre.setInt(2, item.getApointment_doctor_id());
 			pre.setString(3, item.getApointment_date());
-			pre.setString(4, item.getApointment_created_date());
-			pre.setString(5, item.getApointment_time());
+			pre.setString(4, item.getApointment_created_date());			
 			pre.setString(6, item.getApointment_symptom());
 
 			return this.add(pre);
@@ -108,8 +107,7 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 			pre.setInt(1, item.getApointment_customer_id());			
 			pre.setInt(2, item.getApointment_doctor_id());			
 			pre.setString(3, item.getApointment_date());
-			pre.setString(4, item.getApointment_created_date());
-			pre.setString(5, item.getApointment_time());
+			pre.setString(4, item.getApointment_created_date());			
 			pre.setString(6, item.getApointment_symptom());
 
 			pre.setInt(7, item.getApointment_id());

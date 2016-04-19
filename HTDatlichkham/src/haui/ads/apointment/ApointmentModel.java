@@ -80,8 +80,7 @@ public class ApointmentModel {
 					item.setApointment_doctor_id(rs.getInt("apointment_doctor_id"));
 					item.setApointment_customer_id(rs.getInt("apointment_customer_id"));
 					item.setApointment_created_date(rs.getString("apointment_created_date"));
-					item.setApointment_date(rs.getString("apointment_date"));
-					item.setApointment_time(rs.getString("apointment_time"));
+					item.setApointment_date(rs.getString("apointment_date"));					
 					item.setApointment_symptom(rs.getString("apointment_symptom"));
 				}
 				rs.close();
@@ -108,8 +107,7 @@ public class ApointmentModel {
 					item.setApointment_doctor_id(rs.getInt("apointment_doctor_id"));
 					item.setApointment_customer_id(rs.getInt("apointment_customer_id"));
 					item.setApointment_created_date(rs.getString("apointment_created_date"));
-					item.setApointment_date(rs.getString("apointment_date"));
-					item.setApointment_time(rs.getString("apointment_time"));
+					item.setApointment_date(rs.getString("apointment_date"));					
 					item.setApointment_symptom(rs.getString("apointment_symptom"));					
 					items.add(item);
 				}		

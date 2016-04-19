@@ -31,8 +31,7 @@ public class ApointmentView extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public ApointmentView() {
-		super();
-		// TODO Auto-generated constructor stub
+		super();		
 	}
 
 	/**
@@ -93,8 +92,7 @@ public class ApointmentView extends HttpServlet {
 		out.print("<th>Tên bệnh nhân</th>");
 		out.print("<th>Tên bác sĩ</th>");		
 		out.print("<th>Ngày đặt hẹn</th>");
-		out.print("<th>Ngày hẹn</th>");
-		out.print("<th>Giờ hẹn</th>");
+		out.print("<th>Ngày hẹn</th>");		
 		out.print("<th>Triệu chứng</th>");		
 		out.print("<th>Thực hiện</th>");
 		out.print("<th>ID</th>");

@@ -13,8 +13,7 @@ public class ApointmentObject {
 	private int apointment_customer_id;
 	private int apointment_doctor_id;
 	private String apointment_date;
-	private String apointment_created_date;
-	private String apointment_time;
+	private String apointment_created_date;	
 	private String apointment_symptom;
 	private String apointment_note;
 
@@ -42,8 +41,7 @@ public class ApointmentObject {
 		this.apointment_customer_id = apointment_customer_id;
 		this.apointment_doctor_id = apointment_doctor_id;
 		this.apointment_date = apointment_date;
-		this.apointment_created_date = apointment_created_date;
-		this.apointment_time = apointment_time;
+		this.apointment_created_date = apointment_created_date;		
 		this.apointment_symptom = apointment_symptom;
 		this.apointment_note = apointment_note;
 	}
@@ -121,22 +119,7 @@ public class ApointmentObject {
 	 */
 	public void setApointment_created_date(String apointment_created_date) {
 		this.apointment_created_date = apointment_created_date;
-	}
-
-	/**
-	 * @return the apointment_time
-	 */
-	public String getApointment_time() {
-		return apointment_time;
-	}
-
-	/**
-	 * @param apointment_time
-	 *            the apointment_time to set
-	 */
-	public void setApointment_time(String apointment_time) {
-		this.apointment_time = apointment_time;
-	}
+	}	
 
 	/**
 	 * @return the apointment_symptom
