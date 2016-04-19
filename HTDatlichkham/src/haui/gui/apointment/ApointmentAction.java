@@ -15,7 +15,6 @@ import haui.ConnectionPool;
 import haui.gui.doctor.DoctorControl;
 import haui.library.ApointmentConstants;
 import haui.library.DateUtils;
-import haui.library.StringUltils;
 import haui.library.Utilities;
 import haui.objects.ApointmentObject;
 import haui.objects.DoctorObject;
@@ -74,11 +73,13 @@ public class ApointmentAction extends HttpServlet {
 		// kiem tra trung lich hen
 		short doctorid = Utilities.getShortParam(request, "doctorid");
 		int duration = Utilities.getIntParam(request, "duration");
-		System.out.println(duration);
+
+		String startTime = DateUtils.getStartTime();
+		String endTime = DateUtils.getEndTime();
 
 		String json = null;
 		// TODO: for test
-		String date = DateUtils.roundTime15M(DateUtils.addMintue("201604170700", duration / 60));
+		String date = DateUtils.addMintue("201604171610", duration / 60);
 
 		ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("c_pool");
 		ApointmentControl ac = new ApointmentControl(cp);
@@ -87,40 +88,50 @@ public class ApointmentAction extends HttpServlet {
 		}
 		// tao doi tuong bo loc
 		ArrayList<ApointmentObject> items = ac.getNextApointmentsByDocId(doctorid, date);
-		ArrayList<String> dateList = new ArrayList<String>();
-		int apointmentListLength = items.size();
-		if (apointmentListLength == 0) {
-			dateList.add(date);
-		} else {
-			String temp = DateUtils.addMintue(items.get(0).getApointment_date(), ApointmentConstants.APOINTMENT_LENGTH);
+		ArrayList<String> dateList = new ArrayList<>();
 
-			String flag = null;
-			int flag2 = 0;
-			int j = 0;
-			int number = 0;
-			while (number < 5) {
-				j = flag2;
-				while (j < apointmentListLength) {
-					flag = "0";
-					if (temp.equals(items.get(j).getApointment_date())) {
-						flag = "1";
-						flag2 = j;
-						break;
-					}
-					j++;
-				}
-				if ("0".equals(flag)) {
-					dateList.add(DateUtils.getDateFormat(DateUtils.makeDate(temp), "dd/MM/yyyy HH:mm"));
-					number++;
-				}
-				temp = DateUtils.addMintue(temp, ApointmentConstants.APOINTMENT_LENGTH);
+		date = DateUtils.roundTime15M(date);
+
+		int count = 0;
+		while (count < 5) {
+
+			// kiem tra dieu kien thoi gian lam viec
+			if (DateUtils.isEalier(date, startTime)) {
+				date = startTime;
+			} else if (date.equals(endTime) || DateUtils.isAfter(date, endTime)) {
+				date = DateUtils.addDay(startTime, 1);
+				startTime = DateUtils.addDay(startTime, 1);
+				endTime = DateUtils.addDay(endTime, 1);
 			}
+
+			// neu chua co lich kham vao thoi diem nay thi them vao danh sach
+			// tra ve
+			if (isApointment(date, items)) {
+				dateList.add(DateUtils.changeDateFormat(date, DateUtils.YYYY_MM_DD_HH_MM, DateUtils.DISPLAY_DATETIME));
+				count++;
+			}
+			date = DateUtils.addMintue(date, ApointmentConstants.APOINTMENT_LENGTH);
 		}
 
 		json = new Gson().toJson(dateList);
 		response.setContentType("application/json");
 		response.getWriter().write(json);
 
+	}
+
+	// kiem tra neu ngay hen co thoa man hay khong
+	private static boolean isApointment(String date, ArrayList<ApointmentObject> items) {
+		if (items.size() == 0) {
+			return true;
+		}
+		int j = 0;
+		while (j < items.size()) {
+			if (date.equals(items.get(j).getApointment_date())) {
+				return false;
+			}
+			j++;
+		}
+		return true;
 	}
 
 }
