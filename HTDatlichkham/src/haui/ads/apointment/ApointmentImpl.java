@@ -62,7 +62,7 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 	 */
 	@Override
 	public boolean addApointment(ApointmentObject item) {
-		String sql = "INSERT INTO tblapointment(apointment_customer_id,apointment_doctor_id, ";
+		String sql = "INSERT INTO tblapointment(apointment_patient_id,apointment_doctor_id, ";
 		sql += "apointment_date, apointment_created_date, ";
 		sql += "apointment_time, apointment_symptom) ";
 		sql += "VALUE(?,?,?,?,?,?)";
@@ -72,7 +72,7 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 			PreparedStatement pre = this.con.prepareStatement(sql);
 
 			// Truyen gia tri
-			pre.setInt(1, item.getApointment_customer_id());			
+			pre.setInt(1, item.getApointment_patient_id());			
 			pre.setInt(2, item.getApointment_doctor_id());
 			pre.setString(3, item.getApointment_date());
 			pre.setString(4, item.getApointment_created_date());			
@@ -94,7 +94,7 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 	 */
 	@Override
 	public boolean editApointment(ApointmentObject item) {
-		String sql = " UPDATE tblapointment set apointment_customer_id=?,apointment_doctor_id=?, ";
+		String sql = " UPDATE tblapointment set apointment_patient_id=?,apointment_doctor_id=?, ";
 		sql += " apointment_date=?,apointment_created_date=?, ";
 		sql += " apointment_time=?, apointment_symptom=? ";
 		sql += " WHERE apointment_id=?";
@@ -104,7 +104,7 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 			PreparedStatement pre = this.con.prepareStatement(sql);
 
 			// Truyen gia tri
-			pre.setInt(1, item.getApointment_customer_id());			
+			pre.setInt(1, item.getApointment_patient_id());			
 			pre.setInt(2, item.getApointment_doctor_id());			
 			pre.setString(3, item.getApointment_date());
 			pre.setString(4, item.getApointment_created_date());			

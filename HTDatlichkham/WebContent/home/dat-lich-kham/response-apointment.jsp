@@ -3,11 +3,11 @@
 <%@page import="java.util.*"%>
 
 <%
-	String customerCode = (String) session.getAttribute("customerCode");
+	String patientCode = (String) session.getAttribute("patientCode");
 	String room = (String) session.getAttribute("room");
 	String datetime=(String)session.getAttribute("datetime");
-	if (customerCode != null && room != null) {
-		if (!customerCode.equalsIgnoreCase("") && !room.equalsIgnoreCase("")) {
+	if (patientCode != null && room != null) {
+		if (!patientCode.equalsIgnoreCase("") && !room.equalsIgnoreCase("")) {
 %>
 <jsp:include flush="true" page="/home/header.jsp"></jsp:include>
 <div class="main">
@@ -18,7 +18,7 @@
 		viên Nhân đạo tại địa chỉ:&nbsp<label style="color: #00AACC"> <%=room%>,
 			số 32, Đường 32, Quận Bắc Từ Liêm, Hà Nội
 		</label> để khám bệnh theo lịch hẹn. <br /> Mã số khám bệnh của bạn là:&nbsp<label
-			style="color: #00AACC"> <%=customerCode%></label><br /> 
+			style="color: #00AACC"> <%=patientCode%></label><br /> 
 			Thời gian hẹn là:&nbsp<label style="color: #00AACC"><%=datetime %></label><br/>
 			Bạn vui lòng
 		ghi nhớ mã sô bệnh nhân khi đi khám bệnh để bác sĩ xác nhận!
@@ -27,7 +27,7 @@
 	<jsp:include flush="true" page="/home/footer.jsp"></jsp:include>
 </div>
 <%
-	session.removeAttribute("customerCode");
+	session.removeAttribute("patientCode");
 			session.removeAttribute("room");
 
 		} else {

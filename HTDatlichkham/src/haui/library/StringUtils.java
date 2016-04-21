@@ -7,12 +7,12 @@ package haui.library;
  * @author Dinh Hieu
  *
  */
-public class StringUltils {
+public class StringUtils {
 
 	/**
 	 * 
 	 */
-	public StringUltils() {
+	public StringUtils() {
 	}
 
 	public static boolean isEmpty(String s) {

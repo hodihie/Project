@@ -145,7 +145,7 @@ public final class DateUtil {
 	public static String convertToDateString(String yyyymmdd) {
 
 		// 引数がnull又は空文字列の場合はnullを返します。
-		if (StringUtil.isEmpty(yyyymmdd)) {
+		if (StringUtils.isEmpty(yyyymmdd)) {
 			return null;
 		}
 
@@ -173,7 +173,7 @@ public final class DateUtil {
 	public static String convertToDateStringYYYYMM(String yyyymm) {
 
 		// 引数がnull又は空文字列の場合はnullを返します。
-		if (StringUtil.isEmpty(yyyymm)) {
+		if (StringUtils.isEmpty(yyyymm)) {
 			return null;
 		}
 
@@ -200,7 +200,7 @@ public final class DateUtil {
 	public static String convertToDateStringYYYYMMDD(String yyyymmdd) {
 
 		// 引数がnull又は空文字列の場合はnullを返します。
-		if (StringUtil.isEmpty(yyyymmdd)) {
+		if (StringUtils.isEmpty(yyyymmdd)) {
 			return null;
 		}
 
@@ -228,7 +228,7 @@ public final class DateUtil {
 	public static String convertToDateStringMM(String yyyymm) {
 
 		// 引数がnull又は空文字列の場合はnullを返します。
-		if (StringUtil.isEmpty(yyyymm)) {
+		if (StringUtils.isEmpty(yyyymm)) {
 			return null;
 		}
 
@@ -356,7 +356,7 @@ public final class DateUtil {
 		String currentDate;
 		if (workSpace != null) {
 			currentDate = workSpace.getCurrentDate();
-			if (!StringUtil.isEmpty(currentDate)) {
+			if (!StringUtils.isEmpty(currentDate)) {
 				return getDateFormat(
 						StringToMakeDate(currentDate, YYYYMMDD),
 						JAPANESE_DATE);
@@ -369,7 +369,7 @@ public final class DateUtil {
 				"DateManagement",
 				"REFERENCEDATE");
 
-		if (!StringUtil.isEmpty(currentDate)) {
+		if (!StringUtils.isEmpty(currentDate)) {
 			return getDateFormat(
 					StringToMakeDate(currentDate, YYYYMMDD),
 					JAPANESE_DATE);
@@ -394,7 +394,7 @@ public final class DateUtil {
 		String currentDate;
 		if (workSpace != null) {
 			currentDate = workSpace.getCurrentDate();
-			if (!StringUtil.isEmpty(currentDate)) {
+			if (!StringUtils.isEmpty(currentDate)) {
 				return getDateFormat(
 						StringToMakeDate(currentDate, YYYYMMDD),
 						JAPANESE_WEEK_DATE);
@@ -407,7 +407,7 @@ public final class DateUtil {
 				"DateManagement",
 				"REFERENCEDATE");
 
-		if (!StringUtil.isEmpty(currentDate)) {
+		if (!StringUtils.isEmpty(currentDate)) {
 			return getDateFormat(
 					StringToMakeDate(currentDate, YYYYMMDD),
 					JAPANESE_WEEK_DATE);
@@ -432,7 +432,7 @@ public final class DateUtil {
 		String currentDate;
 		if (workSpace != null) {
 			currentDate = workSpace.getCurrentDate();
-			if (!StringUtil.isEmpty(currentDate)) {
+			if (!StringUtils.isEmpty(currentDate)) {
 				return getDateFormat(
 						StringToMakeDate(currentDate, YYYYMMDD),
 						JAPANESE_WEEK_DAY_DATE);
@@ -445,7 +445,7 @@ public final class DateUtil {
 				"DateManagement",
 				"REFERENCEDATE");
 
-		if (!StringUtil.isEmpty(currentDate)) {
+		if (!StringUtils.isEmpty(currentDate)) {
 			return getDateFormat(
 					StringToMakeDate(currentDate, YYYYMMDD),
 					JAPANESE_WEEK_DAY_DATE);
@@ -471,7 +471,7 @@ public final class DateUtil {
 		String currentDate;
 		if (workSpace != null) {
 			currentDate = workSpace.getCurrentDate();
-			if (!StringUtil.isEmpty(currentDate)) {
+			if (!StringUtils.isEmpty(currentDate)) {
 				return getDateFormat(
 						StringToMakeDate(currentDate, YYYYMMDD),
 						YYYYMMDD);
@@ -484,7 +484,7 @@ public final class DateUtil {
 				"DateManagement",
 				"REFERENCEDATE");
 
-		if (!StringUtil.isEmpty(currentDate)) {
+		if (!StringUtils.isEmpty(currentDate)) {
 			return getDateFormat(
 					StringToMakeDate(currentDate, YYYYMMDD),
 					YYYYMMDD);
@@ -507,7 +507,7 @@ public final class DateUtil {
 
 		//生年月日から年度年齢を計算し返却する。
 		// 引数がnull又は空文字列の場合はnullを返します。
-		if (StringUtil.isEmpty(byyyymmdd)) {
+		if (StringUtils.isEmpty(byyyymmdd)) {
 			return null;
 		}
 
@@ -577,7 +577,7 @@ public final class DateUtil {
 	public static Date makeDate(String s) {
 
 		// 引数がNull又は空の場合nullを返却する。
-		if (StringUtil.isEmpty(s)) {
+		if (StringUtils.isEmpty(s)) {
 			return null;
 		}
 
@@ -600,7 +600,7 @@ public final class DateUtil {
 	public static String addMonth(String sYYYYMMDD, int month) {
 
 		// 引数がnull又は空文字列の場合はnullを返します。
-		if (StringUtil.isEmpty(sYYYYMMDD)) {
+		if (StringUtils.isEmpty(sYYYYMMDD)) {
 			return null;
 		}
 
@@ -649,7 +649,7 @@ public final class DateUtil {
 	public static String addDay(String sYYYYMMDD, int day) {
 
 		// 引数がnull又は空文字列の場合はnullを返します。
-		if (StringUtil.isEmpty(sYYYYMMDD)) {
+		if (StringUtils.isEmpty(sYYYYMMDD)) {
 			return null;
 		}
 
@@ -696,7 +696,7 @@ public final class DateUtil {
 	public static String calcEmoDay(String sYYYYMMDD) {
 
 		// 引数がnull又は空文字列の場合はnullを返します。
-		if (StringUtil.isEmpty(sYYYYMMDD)) {
+		if (StringUtils.isEmpty(sYYYYMMDD)) {
 			return null;
 		}
 
@@ -729,7 +729,7 @@ public final class DateUtil {
 	public static String calcEmoYYYYMMDD(String sYYYYMMDD) {
 
 		// 引数がnull又は空文字列の場合はnullを返します。
-		if (StringUtil.isEmpty(sYYYYMMDD)) {
+		if (StringUtils.isEmpty(sYYYYMMDD)) {
 			return null;
 		}
 
@@ -880,7 +880,7 @@ public final class DateUtil {
 			String newFormat) {
 
 		// 引数がnull又は空文字列の場合はnullを返します。
-		if (StringUtil.isEmpty(sDate)) {
+		if (StringUtils.isEmpty(sDate)) {
 			return null;
 		}
 
@@ -1009,7 +1009,7 @@ public final class DateUtil {
 	private static Date StringToMakeDate(String s, String format) {
 
 		// 引数がnull又は空文字列の場合はnullを返します。
-		if (StringUtil.isEmpty(s) || StringUtil.isEmpty(format)) {
+		if (StringUtils.isEmpty(s) || StringUtils.isEmpty(format)) {
 			return null;
 		}
 
@@ -1044,7 +1044,7 @@ public final class DateUtil {
 	private static String getDateFormat(Date date, String newFormat) {
 
 		// 引数がnull又は空文字の場合はnullを返します。
-		if (date == null || StringUtil.isEmpty(newFormat)) {
+		if (date == null || StringUtils.isEmpty(newFormat)) {
 			return null;
 		}
 
@@ -1079,7 +1079,7 @@ public final class DateUtil {
 	public static String convertToDateStringYYYYMD(String yyyymmdd) {
 
 		// 引数がnull又は空文字列の場合はnullを返します。
-		if (StringUtil.isEmpty(yyyymmdd)) {
+		if (StringUtils.isEmpty(yyyymmdd)) {
 			return null;
 		}
 
@@ -1107,7 +1107,7 @@ public final class DateUtil {
 	public static String convertToDateStringYYYYM(String yyyymm) {
 
 		// 引数がnull又は空文字列の場合はnullを返します。
-		if (StringUtil.isEmpty(yyyymm)) {
+		if (StringUtils.isEmpty(yyyymm)) {
 			return null;
 		}
 
@@ -1133,7 +1133,7 @@ public final class DateUtil {
 	 * @return パラメータが妥当でない場合はnullを返却し、妥当の場合は日数を返却する。
 	 */
 	public static Integer daysBetween(String strFromDate, String strToDate) {
-		if (StringUtil.isEmpty(strFromDate)) {
+		if (StringUtils.isEmpty(strFromDate)) {
 			return null;
 		}
 
@@ -1141,7 +1141,7 @@ public final class DateUtil {
 			return null;
 		}
 
-		if (StringUtil.isEmpty(strToDate)) {
+		if (StringUtils.isEmpty(strToDate)) {
 			return null;
 		}
 

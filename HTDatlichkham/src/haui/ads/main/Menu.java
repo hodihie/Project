@@ -41,7 +41,7 @@ public class Menu extends HttpServlet {
 	    out.print(
 	        "<a href=\"/adv/doctor/view\"><h3>Quản lý Bác sĩ</h3></a>");
 	    out.print("<a href=\"/adv/speciality/view\"><h3>Quản lý Chuyên khoa</h3></a>");	    
-	    out.print("<a href=\"/adv/customer/view\"><h3>Quản lý Bệnh nhân</h3></a>");
+	    out.print("<a href=\"/adv/patient/view\"><h3>Quản lý Bệnh nhân</h3></a>");
 	    out.print("<a href=\"/adv/apointment/view\"><h3>Quản lý Lịch khám</h3></a>");	    
 	    out.print("</div>");
 	}

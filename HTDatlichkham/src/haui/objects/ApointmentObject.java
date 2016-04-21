@@ -10,7 +10,7 @@ package haui.objects;
 public class ApointmentObject {
 
 	private int apointment_id;
-	private int apointment_customer_id;
+	private int apointment_patient_id;
 	private int apointment_doctor_id;
 	private String apointment_date;
 	private String apointment_created_date;	
@@ -26,7 +26,7 @@ public class ApointmentObject {
 
 	/**
 	 * @param apointment_id
-	 * @param apointment_customer_id
+	 * @param apointment_patient_id
 	 * @param apointment_doctor_id
 	 * @param apointment_date
 	 * @param apointment_created_date
@@ -34,11 +34,11 @@ public class ApointmentObject {
 	 * @param apointment_symptom
 	 * @param apointment_note
 	 */
-	public ApointmentObject(int apointment_id, int apointment_customer_id, int apointment_doctor_id,
+	public ApointmentObject(int apointment_id, int apointment_patient_id, int apointment_doctor_id,
 			String apointment_date, String apointment_created_date, String apointment_time, String apointment_symptom,
 			String apointment_note) {
 		this.apointment_id = apointment_id;
-		this.apointment_customer_id = apointment_customer_id;
+		this.apointment_patient_id = apointment_patient_id;
 		this.apointment_doctor_id = apointment_doctor_id;
 		this.apointment_date = apointment_date;
 		this.apointment_created_date = apointment_created_date;		
@@ -62,18 +62,18 @@ public class ApointmentObject {
 	}
 
 	/**
-	 * @return the apointment_customer_id
+	 * @return the apointment_patient_id
 	 */
-	public int getApointment_customer_id() {
-		return apointment_customer_id;
+	public int getApointment_patient_id() {
+		return apointment_patient_id;
 	}
 
 	/**
-	 * @param apointment_customer_id
-	 *            the apointment_customer_id to set
+	 * @param apointment_patient_id
+	 *            the apointment_patient_id to set
 	 */
-	public void setApointment_customer_id(int apointment_customer_id) {
-		this.apointment_customer_id = apointment_customer_id;
+	public void setApointment_patient_id(int apointment_patient_id) {
+		this.apointment_patient_id = apointment_patient_id;
 	}
 
 	/**

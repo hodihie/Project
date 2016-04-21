@@ -1,4 +1,4 @@
-package haui.gui.customer;
+package haui.gui.patient;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CustomerAction
+ * Servlet implementation class PatientAction
  */
-@WebServlet("/home/dat-lich-kham/customer")
-public class CustomerAction extends HttpServlet {
+@WebServlet("/home/dat-lich-kham/patient")
+public class PatientAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CustomerAction() {
+    public PatientAction() {
         super();
         // TODO Auto-generated constructor stub
     }

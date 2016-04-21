@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import haui.ConnectionPool;
 import haui.ConnectionPoolImpl;
-import haui.ads.customer.CustomerControl;
+import haui.ads.patient.PatientControl;
 import haui.ads.doctor.DoctorControl;
 import haui.ads.user.UserControl;
 import haui.ads.user.UserLibrary;
@@ -75,7 +75,7 @@ public class ApointmentControl {
 
 	// ***********************************************/
 	public String viewApointments(ApointmentObject similar, int page, byte total, DoctorControl dc,
-			CustomerControl cc) {
+			PatientControl cc) {
 		ArrayList items = this.am.getApointmentObjects(similar, page, total);
 		return ApointmentLibrary.viewApointments(items, dc, cc);
 	}

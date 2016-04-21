@@ -11,12 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import haui.ConnectionPool;
-import haui.ads.customer.CustomerControl;
-import haui.ads.doctor.Doctor;
 import haui.ads.doctor.DoctorControl;
-import haui.ads.user.UserControl;
+import haui.ads.patient.PatientControl;
 import haui.objects.ApointmentObject;
-import haui.objects.DoctorObject;
 import haui.objects.UserObject;
 
 /**
@@ -31,7 +28,7 @@ public class ApointmentView extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public ApointmentView() {
-		super();		
+		super();
 	}
 
 	/**
@@ -61,14 +58,14 @@ public class ApointmentView extends HttpServlet {
 		if (cp == null) {
 			getServletContext().setAttribute("c_pool", ac.getConnectionPool());
 		}
-		
-		//tao doi tuong bo loc
-		ApointmentObject similar=new ApointmentObject();
-		DoctorControl dc= new DoctorControl(cp);
-		CustomerControl cc= new CustomerControl(cp);
-		
+
+		// tao doi tuong bo loc
+		ApointmentObject similar = new ApointmentObject();
+		DoctorControl dc = new DoctorControl(cp);
+		PatientControl cc = new PatientControl(cp);
+
 		// lay du lieu da duoc tao cau truc html
-		String viewApointments = ac.viewApointments(similar, 1, (byte) 15, dc,cc);
+		String viewApointments = ac.viewApointments(similar, 1, (byte) 15, dc, cc);
 
 		// tra ve ket noi
 		ac.releaseConnection();
@@ -83,17 +80,17 @@ public class ApointmentView extends HttpServlet {
 		out.print("<table cellspacing=0>");
 
 		out.print("<tr>");
-		out.print("<td colspan=9>");		
+		out.print("<td colspan=9>");
 		out.print("</td>");
 		out.print("</tr>");
 
 		out.print("<tr>");
 		out.print("<th>STT</th>");
 		out.print("<th>Tên bệnh nhân</th>");
-		out.print("<th>Tên bác sĩ</th>");		
+		out.print("<th>Tên bác sĩ</th>");
 		out.print("<th>Ngày đặt hẹn</th>");
-		out.print("<th>Ngày hẹn</th>");		
-		out.print("<th>Triệu chứng</th>");		
+		out.print("<th>Ngày hẹn</th>");
+		out.print("<th>Triệu chứng</th>");
 		out.print("<th>Thực hiện</th>");
 		out.print("<th>ID</th>");
 		out.print("</tr>");

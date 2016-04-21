@@ -1,4 +1,4 @@
-package haui.ads.customer;
+package haui.ads.patient;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,22 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import haui.ConnectionPool;
 import haui.ads.doctor.DoctorControl;
-import haui.objects.CustomerObject;
+import haui.objects.PatientObject;
 import haui.objects.DoctorObject;
 import haui.objects.UserObject;
 
 /**
- * Servlet implementation class CustomerView
+ * Servlet implementation class PatientView
  */
-@WebServlet("/adv/customer/view")
-public class CustomerView extends HttpServlet {
+@WebServlet("/adv/patient/view")
+public class PatientView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String CONTENT_TYPE = "text/html; charset=UTF-8";
 	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CustomerView() {
+	public PatientView() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -54,16 +54,16 @@ public class CustomerView extends HttpServlet {
 
 		// tim bo quanly ket noi
 		ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("c_pool");
-		CustomerControl cc = new CustomerControl(cp);
+		PatientControl cc = new PatientControl(cp);
 		if (cp == null) {
 			getServletContext().setAttribute("c_pool", cc.getConnectionPool());
 		}
 
 		// tao doi tuong bo loc
-		CustomerObject similar = new CustomerObject();
+		PatientObject similar = new PatientObject();
 
 		// lay du lieu da duoc tao cau truc html
-		String viewCustomers = cc.viewCustomers(similar, 1, (byte) 15);
+		String viewPatients = cc.viewPatients(similar, 1, (byte) 15);
 
 		// tra ve ket noi
 		cc.releaseConnection();
@@ -94,7 +94,7 @@ public class CustomerView extends HttpServlet {
 		out.print("<th>ID</th>");
 		out.print("</tr>");
 
-		out.print(viewCustomers);
+		out.print(viewPatients);
 
 		out.print("</table>");
 		out.print("</div>");

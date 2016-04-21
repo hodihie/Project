@@ -46,7 +46,7 @@ public class DateUtils {
 	}
 
 	public static Date StringToMakeDate(String s, String format) {
-		if (StringUltils.isEmpty(s) || StringUltils.isEmpty(format)) {
+		if (StringUtils.isEmpty(s) || StringUtils.isEmpty(format)) {
 			return null;
 		}
 
@@ -63,7 +63,7 @@ public class DateUtils {
 	}
 
 	public static Date makeDate(String s) {
-		if (StringUltils.isEmpty(s)) {
+		if (StringUtils.isEmpty(s)) {
 			return null;
 		}
 
@@ -72,7 +72,7 @@ public class DateUtils {
 	}
 
 	public static Date makeDateSS(String s) {
-		if (StringUltils.isEmpty(s)) {
+		if (StringUtils.isEmpty(s)) {
 			return null;
 		}
 
@@ -82,7 +82,7 @@ public class DateUtils {
 
 	public static String getDateFormat(Date date, String newFormat) {
 
-		if (date == null || StringUltils.isEmpty(newFormat)) {
+		if (date == null || StringUtils.isEmpty(newFormat)) {
 			return null;
 		}
 
@@ -103,7 +103,7 @@ public class DateUtils {
 	}
 
 	public static String changeDateFormat(String sDate, String oldFormat, String newFormat) {
-		if (StringUltils.isEmpty(sDate)) {
+		if (StringUtils.isEmpty(sDate)) {
 			return null;
 		}
 		return getDateFormat(StringToMakeDate(sDate, oldFormat), newFormat);
@@ -123,7 +123,7 @@ public class DateUtils {
 
 	public static String addDay(String sYYYYMMDDHHMM, int day) {
 
-		if (StringUltils.isEmpty(sYYYYMMDDHHMM)) {
+		if (StringUtils.isEmpty(sYYYYMMDDHHMM)) {
 			return null;
 		}
 
@@ -152,7 +152,7 @@ public class DateUtils {
 
 	public static String addMintue(String sYYYYMMDDHHMM, int minute) {
 
-		if (StringUltils.isEmpty(sYYYYMMDDHHMM)) {
+		if (StringUtils.isEmpty(sYYYYMMDDHHMM)) {
 			return null;
 		}
 
@@ -182,7 +182,7 @@ public class DateUtils {
 	public static String roundTime15M(String sYYYYMMDDHHMM) {
 		String resultStr = "";
 
-		if (StringUltils.isEmpty(sYYYYMMDDHHMM)) {
+		if (StringUtils.isEmpty(sYYYYMMDDHHMM)) {
 			return null;
 		}
 
