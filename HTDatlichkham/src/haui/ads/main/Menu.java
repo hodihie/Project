@@ -32,17 +32,19 @@ public class Menu extends HttpServlet {
 		response.setContentType(CONTENT_TYPE);
 		PrintWriter out= response.getWriter();
 		out.print("<div class=\"menu\">");
-	    out.print("<a href=\"/adv/view\"><h3>Home</h3></a>");
+	    out.print("<a href=\"/adv/view\"><img src=\"/adv/imgs/icons/home_icon.png\" class=\"icon\"><h3>Home</h3></a>");
 	    out.print(
-	        "<a href=\"/adv/user/view\"><h3>Quản lý Người sử dụng</h3></a>");
-	    out.print("<a href=\"/adv/section/view\"><h3>Quản lý Chuyên mục</h3></a>");
-	    out.print("<a href=\"/adv/category/view\"><h3>Quản lý Thể loại</h3></a>");
-	    out.print("<a href=\"/adv/article/view\"><h3>Quản lý Tin bài</h3></a>");
+		        "<a href=\"/adv/doctor/view\"><img src=\"/adv/imgs/icons/doctor_icon.png\" class=\"icon\"/><h3>Quản lý Bác sĩ</h3></a>");
+		    out.print("<a href=\"/adv/speciality/view\"><img src=\"/adv/imgs/icons/speciality_icon.png\" class=\"icon\"><h3>Quản lý Chuyên khoa</h3></a>");	    
+		    out.print("<a href=\"/adv/patient/view\"><img src=\"/adv/imgs/icons/patient_icon.png\" class=\"icon\"><h3>Quản lý Bệnh nhân</h3></a>");
+		    out.print("<a href=\"/adv/apointment/view\"><img src=\"/adv/imgs/icons/apointment_icon.png\" class=\"icon\"><h3>Quản lý Lịch khám</h3></a>");	
+		    
 	    out.print(
-	        "<a href=\"/adv/doctor/view\"><h3>Quản lý Bác sĩ</h3></a>");
-	    out.print("<a href=\"/adv/speciality/view\"><h3>Quản lý Chuyên khoa</h3></a>");	    
-	    out.print("<a href=\"/adv/patient/view\"><h3>Quản lý Bệnh nhân</h3></a>");
-	    out.print("<a href=\"/adv/apointment/view\"><h3>Quản lý Lịch khám</h3></a>");	    
+	        "<a href=\"/adv/user/view\"><img src=\"/adv/imgs/icons/user_icon.png\" class=\"icon\"><h3>Quản lý Người sử dụng</h3></a>");
+	    out.print("<a href=\"/adv/section/view\"><img src=\"/adv/imgs/icons/category_icon.png\" class=\"icon\"><h3>Quản lý Chuyên mục</h3></a>");
+	    out.print("<a href=\"/adv/category/view\"><img src=\"/adv/imgs/icons/section_icon.png\" class=\"icon\"><h3>Quản lý Thể loại</h3></a>");
+	    out.print("<a href=\"/adv/article/view\"><img src=\"/adv/imgs/icons/article_icon.png\" class=\"icon\"><h3>Quản lý Tin bài</h3></a>");
+	        
 	    out.print("</div>");
 	}
 
