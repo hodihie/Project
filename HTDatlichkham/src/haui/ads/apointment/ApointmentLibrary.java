@@ -25,13 +25,13 @@ public class ApointmentLibrary {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static String viewApointments(ArrayList<ApointmentObject> items, DoctorControl dc, PatientControl cc) {
+	public static String viewApointments(ArrayList<ApointmentObject> items, DoctorControl dc, PatientControl pc) {
 		String tmp = "";
 		int i = 0;		
 		for (ApointmentObject item : items) {
 			tmp += (++i % 2 == 0) ? "<tr class=\"even\">" : "<tr>";
 			tmp += "<td class=NO>" + (i) + "</td>";
-			tmp += "<td>" + cc.getPatientObject(item.getApointment_patient_id()).getPatient_fullname() + "</td>";
+			tmp += "<td>" + pc.getPatientObject(item.getApointment_patient_id()).getPatient_fullname() + "</td>";
 			tmp += "<td class=NAME>" + dc.getDoctorObject(item.getApointment_doctor_id()).getDoctor_name() + "</td>";			
 			tmp += "<td>" + DateUtils.changeDateFormat(item.getApointment_created_date(), DateUtils.YYYY_MM_DD_HH_MM, DateUtils.DISPLAY_DATETIME) + "</td>";			
 			tmp += "<td>" + DateUtils.changeDateFormat(item.getApointment_date(), DateUtils.YYYY_MM_DD_HH_MM, DateUtils.DISPLAY_DATETIME) + "</td>";			

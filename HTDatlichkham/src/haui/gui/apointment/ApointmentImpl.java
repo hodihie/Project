@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import haui.ConnectionPool;
 import haui.gui.basic.BasicImpl;
 import haui.objects.ApointmentObject;
+import haui.objects.RequestSMSObject;
 
 /**
  * @author Dinh Hieu
@@ -154,6 +155,30 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 			e.printStackTrace();
 		}
 
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see haui.gui.apointment.Apointment#addRequestSMS(haui.objects.RequestSMSObject)
+	 */
+	@Override
+	public boolean addRequestSMS(RequestSMSObject item) {
+		String sql = "INSERT INTO tblrequestsms(req_Phone, req_send_date) ";		
+		sql += " VALUE(?,?)";
+
+		try {
+			// bien dich
+			PreparedStatement pre = this.con.prepareStatement(sql);
+
+			// Truyen gia tri			
+			pre.setString(1, item.getReq_PhoneNumber());
+			pre.setString(2, item.getReq_sendDate());	
+
+			return this.add(pre);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 

@@ -62,10 +62,10 @@ public class ApointmentView extends HttpServlet {
 		// tao doi tuong bo loc
 		ApointmentObject similar = new ApointmentObject();
 		DoctorControl dc = new DoctorControl(cp);
-		PatientControl cc = new PatientControl(cp);
+		PatientControl pc = new PatientControl(cp);
 
 		// lay du lieu da duoc tao cau truc html
-		String viewApointments = ac.viewApointments(similar, 1, (byte) 15, dc, cc);
+		String viewApointments = ac.viewApointments(similar, 1, (byte) 15, dc, pc);
 
 		// tra ve ket noi
 		ac.releaseConnection();

@@ -35,9 +35,9 @@ public class PatientImpl extends BasicImpl implements Patient {
 	@Override
 	public int addPatient(PatientObject item) {
 
-		String sql = "INSERT INTO tblPatient(Patient_fullname,Patient_gender, Patient_address, ";
-		sql += "Patient_phone, Patient_email, ";
-		sql += "Patient_birthday,Patient_code) ";
+		String sql = "INSERT INTO tblPatient(patient_fullname, patient_gender, patient_address, ";
+		sql += "patient_phone, patient_email, ";
+		sql += "patient_birthday, patient_code) ";
 		sql += " VALUE(?,?,?,?,?,?,?) ";
 
 		int generatedKey = 0;
@@ -74,10 +74,10 @@ public class PatientImpl extends BasicImpl implements Patient {
 	 */
 	@Override
 	public boolean editPatient(PatientObject item) {
-		String sql = "UPDATE tblPatient SET Patient_fullname=?,Patient_gender=?, Patient_address=?, ";
-		sql += "Patient_phone=?, Patient_email=?, ";
-		sql += "Patient_birthday=?,Patient_code=? ";
-		sql += " WHERE Patient_id=? ";
+		String sql = "UPDATE tblPatient SET patient_fullname=?, patient_gender=?, patient_address=?, ";
+		sql += "patient_phone=?, patient_email=?, ";
+		sql += "patient_birthday=?, patient_code=? ";
+		sql += " WHERE patient_id=? ";
 
 		try {
 			// bien dich
@@ -114,7 +114,7 @@ public class PatientImpl extends BasicImpl implements Patient {
 			return false;
 		}
 
-		String sql = "DELETE FROM tblPatient WHERE Patient_id=?";
+		String sql = "DELETE FROM tblpatient WHERE patient_id=?";
 
 		PreparedStatement pre;
 		try {
@@ -135,7 +135,7 @@ public class PatientImpl extends BasicImpl implements Patient {
 		boolean flag = false;
 
 		String sql = "SELECT apointment_id FROM tblapointment ";
-		sql += "WHERE apointment_Patient_id=" + item.getPatient_id();
+		sql += "WHERE apointment_patient_id=" + item.getPatient_id();
 
 		ResultSet rs = this.get(sql, 0);
 		if (rs != null) {
@@ -158,7 +158,7 @@ public class PatientImpl extends BasicImpl implements Patient {
 	 */
 	@Override
 	public ResultSet getPatient(int id) {
-		String sql = "SELECT * FROM tblPatient WHERE Patient_id=?";
+		String sql = "SELECT * FROM tblpatient WHERE patient_id=?";
 		return this.get(sql, id);
 	}
 
@@ -170,8 +170,8 @@ public class PatientImpl extends BasicImpl implements Patient {
 	 */
 	@Override
 	public ResultSet getPatients(PatientObject similar, int at, byte total) {
-		String sql = "SELECT * FROM tblPatient ";
-		sql += " ORDER BY Patient_fullname ASC ";
+		String sql = "SELECT * FROM tblpatient ";
+		sql += " ORDER BY patient_fullname ASC ";
 
 		return this.gets(sql);
 	}

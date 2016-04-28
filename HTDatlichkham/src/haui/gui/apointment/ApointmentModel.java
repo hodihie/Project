@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import haui.ConnectionPool;
 import haui.objects.ApointmentObject;
+import haui.objects.RequestSMSObject;
 import haui.objects.UserObject;
 
 /**
@@ -56,6 +57,10 @@ public class ApointmentModel {
 
 	public boolean editApointment(ApointmentObject item) {
 		return this.a.editApointment(item);
+	}
+	
+	public boolean addRequestSMS(RequestSMSObject item) {
+		return this.a.addRequestSMS(item);
 	}
 
 	// **************************************

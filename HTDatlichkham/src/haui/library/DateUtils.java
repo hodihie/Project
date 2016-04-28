@@ -16,7 +16,9 @@ import java.util.Date;
 public class DateUtils {
 
 	public static String DD_MM_YYYY = "dd/MM/yyyy";
+	public static String YYYY_MM_DD = "yyyyMMdd";
 	public static String YYYY_MM_DD_HH_MM = "yyyyMMddHHmm";
+	public static String YYYY_MM_DD_00_00 = "yyyyMMdd0000";
 	public static String YYYY_MM_DD_HH_MM_SS = "yyyyMMddHHmmss";
 	public static String DISPLAY_DATETIME = "dd/MM/yyyy HH:mm";
 
@@ -34,11 +36,22 @@ public class DateUtils {
 		Date date = new Date();
 		return sdf.format(date);
 	}
+	
+	public static String getCurrentDate() {
+
+		return getDateFormat(new Date(), YYYY_MM_DD);
+	}
 
 	public static String getCurrentDateTime() {
 
 		return getDateFormat(new Date(), YYYY_MM_DD_HH_MM);
 	}
+	
+	public static String getCurrentDateTime0000() {
+
+		return getDateFormat(new Date(), YYYY_MM_DD_00_00);
+	}
+
 
 	public static String getCurrentDateTimess() {
 

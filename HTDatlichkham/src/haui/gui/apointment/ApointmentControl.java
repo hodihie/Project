@@ -10,6 +10,7 @@ import haui.ConnectionPoolImpl;
 import haui.ads.user.UserControl;
 import haui.objects.ApointmentObject;
 import haui.objects.ArticleObject;
+import haui.objects.RequestSMSObject;
 import haui.objects.SpecialityObject;
 import haui.objects.UserObject;
 
@@ -58,6 +59,10 @@ public class ApointmentControl {
 
 	public boolean delApointment(ApointmentObject item) {
 		return this.am.delApointment(item);
+	}
+	
+	public boolean addRequestSMS(RequestSMSObject item) {
+		return this.am.addRequestSMS(item);
 	}
 
 	// ************************************************

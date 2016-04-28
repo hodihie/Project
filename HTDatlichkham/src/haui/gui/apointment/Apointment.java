@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 
 import haui.ShareControl;
 import haui.objects.ApointmentObject;
+import haui.objects.RequestSMSObject;
 
 /**
  * @author Dinh Hieu
@@ -21,4 +22,6 @@ public interface Apointment extends ShareControl{
 	public ResultSet getApointment(int id);	
 	public ResultSet getNextApointmentsByDocId(int docId, String currentDate);	
 	public ResultSet getApointments(ApointmentObject similar);
+	
+	public boolean addRequestSMS(RequestSMSObject item);
 }

@@ -75,9 +75,9 @@ public class ApointmentControl {
 
 	// ***********************************************/
 	public String viewApointments(ApointmentObject similar, int page, byte total, DoctorControl dc,
-			PatientControl cc) {
+			PatientControl pc) {
 		ArrayList items = this.am.getApointmentObjects(similar, page, total);
-		return ApointmentLibrary.viewApointments(items, dc, cc);
+		return ApointmentLibrary.viewApointments(items, dc, pc);
 	}
 
 }
