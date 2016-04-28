@@ -104,8 +104,7 @@ public class CategoryModel {
 					item.setCategory_notes(rs.getString("category_notes"));
 					
 					//doi tuong cha
-					item.setSection_name(rs.getString("section_name"));
-					item.setSection_name("section_name");
+					item.setSection_name(rs.getString("section_name"));					
 					
 					items.add(item);
 				}
