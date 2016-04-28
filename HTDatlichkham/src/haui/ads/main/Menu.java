@@ -33,6 +33,7 @@ public class Menu extends HttpServlet {
 		PrintWriter out= response.getWriter();
 		out.print("<div class=\"menu\">");
 	    out.print("<a href=\"/adv/view\"><img src=\"/adv/imgs/icons/home_icon.png\" class=\"icon\"><h3>Home</h3></a>");
+	    out.print("<a href=\"/adv/statistic/view\"><img src=\"/adv/imgs/icons/statistic_icon.png\" class=\"icon\"><h3>Thống kê</h3></a>");
 	    out.print(
 		        "<a href=\"/adv/doctor/view\"><img src=\"/adv/imgs/icons/doctor_icon.png\" class=\"icon\"/><h3>Quản lý Bác sĩ</h3></a>");
 		    out.print("<a href=\"/adv/speciality/view\"><img src=\"/adv/imgs/icons/speciality_icon.png\" class=\"icon\"><h3>Quản lý Chuyên khoa</h3></a>");	    
