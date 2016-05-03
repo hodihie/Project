@@ -32,8 +32,7 @@ public class MakeApointmentAction extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public MakeApointmentAction() {
-		super();
-		// TODO Auto-generated constructor stub
+		super();		
 	}
 
 	/**
@@ -61,12 +60,11 @@ public class MakeApointmentAction extends HttpServlet {
 		String stGender = request.getParameter("rdGender");
 		String birthday = request.getParameter("txtBirthday");
 		String address = request.getParameter("txtAddress");
-		String phone = request.getParameter("txtPhone");
-		String email = request.getParameter("txtEmail");
+		String phone = request.getParameter("txtPhone");		
 
 		if (doctorId > 0 && !date.equalsIgnoreCase("") && !symptom.equalsIgnoreCase("") && !name.equalsIgnoreCase("")
 				&& !stGender.equalsIgnoreCase("") && !birthday.equalsIgnoreCase("") && !address.equalsIgnoreCase("")
-				&& !phone.equalsIgnoreCase("") && !email.equalsIgnoreCase("")) {
+				&& !phone.equalsIgnoreCase("")) {
 			
 			String createdDate = DateUtils.getCurrentDateTime();
 
@@ -77,8 +75,7 @@ public class MakeApointmentAction extends HttpServlet {
 			nPatient.setPatient_gender(gender);
 			nPatient.setPatient_birthday(birthday);
 			nPatient.setPatient_address(Utilities.encode(address));
-			nPatient.setPatient_phone(phone);
-			nPatient.setPatient_email(email);
+			nPatient.setPatient_phone(phone);			
 
 			// tim bo quan ly ket noi
 			ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("c_pool");

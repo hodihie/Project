@@ -67,8 +67,7 @@ public class PatientModel {
 					item.setPatient_id(rs.getInt("patient_id"));
 					item.setPatient_fullname(rs.getString("patient_fullname"));
 					item.setPatient_gender(rs.getShort("patient_gender"));
-					item.setPatient_address(rs.getString("patient_address"));
-					item.setPatient_email(rs.getString("patient_email"));
+					item.setPatient_address(rs.getString("patient_address"));					
 					item.setPatient_birthday(rs.getString("patient_birthday"));
 					item.setPatient_phone(rs.getString("patient_phone"));
 					item.setPatient_code(rs.getString("patient_code"));
@@ -96,8 +95,7 @@ public class PatientModel {
 					item.setPatient_id(rs.getInt("patient_id"));
 					item.setPatient_fullname(rs.getString("patient_fullname"));
 					item.setPatient_gender(rs.getShort("patient_gender"));
-					item.setPatient_address(rs.getString("patient_address"));
-					item.setPatient_email(rs.getString("patient_email"));
+					item.setPatient_address(rs.getString("patient_address"));					
 					item.setPatient_birthday(rs.getString("patient_birthday"));
 					item.setPatient_phone(rs.getString("patient_phone"));
 					item.setPatient_code(rs.getString("patient_code"));

@@ -29,8 +29,7 @@ public class PatientLibrary {
 			tmp += "<td>" + gender + "</td>";
 			tmp += "<td>" + item.getPatient_birthday() + "</td>";
 			tmp += "<td>" + item.getPatient_address() + "</td>";
-			tmp += "<td>" + item.getPatient_phone() + "</td>";
-			tmp += "<td>" + item.getPatient_email() + "</td>";
+			tmp += "<td>" + item.getPatient_phone() + "</td>";			
 
 			tmp += "<td class=ED><a href=\"/adv/patient/del?id=" + item.getPatient_id()
 					+ "\"  onclick=\"if(!confirm('Bạn có muốn xóa bản ghi này không?')) return false;\" >Xóa</a></td>";

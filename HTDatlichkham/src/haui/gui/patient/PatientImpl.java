@@ -35,10 +35,10 @@ public class PatientImpl extends BasicImpl implements Patient {
 	@Override
 	public int addPatient(PatientObject item) {
 
-		String sql = "INSERT INTO tblpatient(patient_fullname,patient_gender, patient_address, ";
-		sql += "patient_phone, patient_email, ";
+		String sql = "INSERT INTO tblpatient(patient_fullname,patient_gender, ";
+		sql += "patient_address, patient_phone, ";
 		sql += "patient_birthday,patient_code) ";
-		sql += " VALUE(?,?,?,?,?,?,?) ";
+		sql += " VALUE(?,?,?,?,?,?) ";
 
 		int generatedKey = 0;
 		try {
@@ -49,10 +49,9 @@ public class PatientImpl extends BasicImpl implements Patient {
 			pre.setString(1, item.getPatient_fullname());
 			pre.setShort(2, item.getPatient_gender());
 			pre.setString(3, item.getPatient_address());
-			pre.setString(4, item.getPatient_phone());
-			pre.setString(5, item.getPatient_email());
-			pre.setString(6, item.getPatient_birthday());
-			pre.setString(7, item.getPatient_code());
+			pre.setString(4, item.getPatient_phone());		
+			pre.setString(5, item.getPatient_birthday());
+			pre.setString(6, item.getPatient_code());
 
 			this.add(pre);
 			ResultSet rs = pre.getGeneratedKeys();
@@ -74,9 +73,9 @@ public class PatientImpl extends BasicImpl implements Patient {
 	 */
 	@Override
 	public boolean editPatient(PatientObject item) {
-		String sql = "UPDATE tblpatient SET patient_fullname=?,patient_gender=?, patient_address=?, ";
-		sql += "patient_phone=?, patient_email=?, ";
-		sql += "patient_birthday=?,patient_code=? ";
+		String sql = "UPDATE tblpatient SET patient_fullname=?, patient_gender=?, ";
+		sql += "patient_address=?, patient_phone=?, ";
+		sql += "patient_birthday=?, patient_code=? ";
 		sql += " WHERE patient_id=? ";
 
 		try {
@@ -87,10 +86,9 @@ public class PatientImpl extends BasicImpl implements Patient {
 			pre.setString(1, item.getPatient_fullname());
 			pre.setShort(2, item.getPatient_gender());
 			pre.setString(3, item.getPatient_address());
-			pre.setString(4, item.getPatient_phone());
-			pre.setString(5, item.getPatient_email());
-			pre.setString(6, item.getPatient_birthday());
-			pre.setString(7, item.getPatient_code());
+			pre.setString(4, item.getPatient_phone());			
+			pre.setString(5, item.getPatient_birthday());
+			pre.setString(6, item.getPatient_code());
 
 			pre.setInt(8, item.getPatient_id());
 

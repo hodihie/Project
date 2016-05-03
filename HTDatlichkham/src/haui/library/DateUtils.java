@@ -21,6 +21,7 @@ public class DateUtils {
 	public static String YYYY_MM_DD_00_00 = "yyyyMMdd0000";
 	public static String YYYY_MM_DD_HH_MM_SS = "yyyyMMddHHmmss";
 	public static String DISPLAY_DATETIME = "dd/MM/yyyy HH:mm";
+	public static String DISPLAY_DATE = "dd/MM/yyyy";
 
 	/**
 	 * 
@@ -233,9 +234,7 @@ public class DateUtils {
 
 		DateFormat df = new SimpleDateFormat(YYYY_MM_DD_HH_MM);
 		resultStr = df.format(cal.getTime());
-		// return resultStr;
-		// TODO
-		return "201604170800";
+		return resultStr;		
 	}
 
 	// get end work time
@@ -249,8 +248,6 @@ public class DateUtils {
 
 		DateFormat df = new SimpleDateFormat(YYYY_MM_DD_HH_MM);
 		resultStr = df.format(cal.getTime());
-		// return resultStr;
-		// TODO
-		return "201604171730";
+		return resultStr;		
 	}
 }

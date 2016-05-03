@@ -77,9 +77,8 @@ public class ApointmentAction extends HttpServlet {
 		String startTime = DateUtils.getStartTime();
 		String endTime = DateUtils.getEndTime();
 
-		String json = null;
-		// TODO: for test
-		String date = DateUtils.addMintue("201604170710", duration / 60);
+		String json = null;		
+		String date = DateUtils.addMintue(DateUtils.getCurrentDateTime(), duration / 60);
 
 		ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("c_pool");
 		ApointmentControl ac = new ApointmentControl(cp);

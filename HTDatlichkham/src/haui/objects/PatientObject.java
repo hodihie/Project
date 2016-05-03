@@ -15,7 +15,6 @@ public class PatientObject {
 	private String patient_birthday;
 	private String patient_address;
 	private String patient_phone;
-	private String patient_email;
 	private String patient_code;
 
 	/**
@@ -35,14 +34,13 @@ public class PatientObject {
 	 * @param patient_code
 	 */
 	public PatientObject(int patient_id, String patient_fullname, short patient_gender, String patient_birthday,
-			String patient_address, String patient_phone, String patient_email, String patient_code) {
+			String patient_address, String patient_phone, String patient_code) {
 		this.patient_id = patient_id;
 		this.patient_fullname = patient_fullname;
 		this.patient_gender = patient_gender;
 		this.patient_birthday = patient_birthday;
 		this.patient_address = patient_address;
 		this.patient_phone = patient_phone;
-		this.patient_email = patient_email;
 		this.patient_code = patient_code;
 	}
 
@@ -134,21 +132,6 @@ public class PatientObject {
 	 */
 	public void setPatient_phone(String patient_phone) {
 		this.patient_phone = patient_phone;
-	}
-
-	/**
-	 * @return the patient_email
-	 */
-	public String getPatient_email() {
-		return patient_email;
-	}
-
-	/**
-	 * @param patient_email
-	 *            the patient_email to set
-	 */
-	public void setPatient_email(String patient_email) {
-		this.patient_email = patient_email;
 	}
 
 	/**

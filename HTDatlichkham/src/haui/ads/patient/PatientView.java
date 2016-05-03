@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import haui.ConnectionPool;
-import haui.ads.doctor.DoctorControl;
 import haui.objects.PatientObject;
-import haui.objects.DoctorObject;
 import haui.objects.UserObject;
 
 /**
@@ -28,8 +26,7 @@ public class PatientView extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public PatientView() {
-		super();
-		// TODO Auto-generated constructor stub
+		super();		
 	}
 
 	/**
@@ -88,8 +85,7 @@ public class PatientView extends HttpServlet {
 		out.print("<th>Giới tính</th>");
 		out.print("<th>Ngày sinh</th>");
 		out.print("<th>Địa chỉ</th>");
-		out.print("<th>Điện thoại</th>");
-		out.print("<th>Email</th>");	
+		out.print("<th>Điện thoại</th>");		
 		out.print("<th>Thực hiện</th>");
 		out.print("<th>ID</th>");
 		out.print("</tr>");
@@ -112,8 +108,7 @@ public class PatientView extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+			throws ServletException, IOException {		
 		doGet(request, response);
 	}
 

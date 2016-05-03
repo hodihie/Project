@@ -2,7 +2,18 @@
 .title{
 	width: 90%;
 	font-size: 15px;
-	color: #000;
+	color: #2493D1;
+	margin-top:15px;
+	padding-top: 15px;
+	border-top: 1px solid #2493D1;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.sub-title{
+	width: 90%;
+	font-size: 15px;
+	color: #2493D1;
 	margin-top:15px;
 	padding-top: 15px;
 	border-top: 1px solid #2493D1;
@@ -19,4 +30,22 @@
 	font-size: 13px;	
 	font-style: italic;
 	font-weight: normal;
+}
+
+.notice{
+	font-weight: bold;
+	font-size: 14px;
+	color: #2493D1;
+}
+
+.hight-line{
+	font-weight: bold;
+	font-size: 14px;
+	color: red;
+}
+
+#confirmMessage{
+	font-weight: bold;
+	font-size: 14px;
+	color: #2493D1;
 }

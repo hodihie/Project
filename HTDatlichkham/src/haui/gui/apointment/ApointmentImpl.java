@@ -9,6 +9,8 @@ import java.sql.SQLException;
 
 import haui.ConnectionPool;
 import haui.gui.basic.BasicImpl;
+import haui.library.ApointmentConstants;
+import haui.library.DateUtils;
 import haui.objects.ApointmentObject;
 import haui.objects.RequestSMSObject;
 
@@ -122,7 +124,7 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 			pre.setInt(1, item.getApointment_patient_id());
 			pre.setInt(2, item.getApointment_doctor_id());
 			pre.setString(3, item.getApointment_date());
-			pre.setString(4, item.getApointment_created_date());			
+			pre.setString(4, item.getApointment_created_date());
 			pre.setString(6, item.getApointment_symptom());
 
 			pre.setInt(7, item.getApointment_id());
@@ -158,27 +160,65 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see haui.gui.apointment.Apointment#addRequestSMS(haui.objects.RequestSMSObject)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see haui.gui.apointment.Apointment#addRequestSMS(haui.objects.
+	 * RequestSMSObject)
 	 */
 	@Override
 	public boolean addRequestSMS(RequestSMSObject item) {
-		String sql = "INSERT INTO tblrequestsms(req_Phone, req_send_date) ";		
-		sql += " VALUE(?,?)";
+		String sql = "INSERT INTO tblrequestsms(req_Phone, req_send_date, req_otp, req_otp_expire) ";
+		sql += " VALUE(?,?,?,?)";
 
 		try {
 			// bien dich
 			PreparedStatement pre = this.con.prepareStatement(sql);
 
-			// Truyen gia tri			
+			// Truyen gia tri
 			pre.setString(1, item.getReq_PhoneNumber());
-			pre.setString(2, item.getReq_sendDate());	
+			pre.setString(2, item.getReq_sendDate());
+			pre.setString(3, item.getReq_otp());
+			pre.setString(4, item.getReq_otpExpire());
 
 			return this.add(pre);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return false;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see haui.gui.apointment.Apointment#getRequestSMSs(haui.objects.
+	 * RequestSMSObject)
+	 */
+	@Override
+	public boolean verifyOTP(RequestSMSObject item) {
+		String sql = " SELECT * FROM tblrequestsms ";
+		sql += " WHERE req_Phone = ? and req_otp = ? and req_otp_expire > ?";
+		sql += " ORDER BY req_send_date ASC ";
+
+		try {
+			// bien dich
+			PreparedStatement pre = this.con.prepareStatement(sql);
+
+			// Truyen gia tri
+			pre.setString(1, item.getReq_PhoneNumber());			
+			pre.setString(2, item.getReq_otp());
+			pre.setString(3, item.getReq_otpExpire());
+
+			ResultSet rs = pre.executeQuery();
+			if (rs.next()) {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 		return false;
 	}
 

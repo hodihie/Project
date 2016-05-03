@@ -64,6 +64,10 @@ public class ApointmentControl {
 	public boolean addRequestSMS(RequestSMSObject item) {
 		return this.am.addRequestSMS(item);
 	}
+	
+	public boolean verifyOTP(RequestSMSObject item) {
+		return this.am.verifyOTP(item);
+	}
 
 	// ************************************************
 	public ApointmentObject getApointmentObject(short id) {

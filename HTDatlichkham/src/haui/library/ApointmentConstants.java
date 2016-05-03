@@ -24,6 +24,9 @@ public class ApointmentConstants {
 	// end minute 30
 	public static final int END_MINUTE;
 
+	// otp time out
+	public static final int OTP_TIMEOUT;
+
 	static {
 
 		APOINTMENT_LENGTH = 15;
@@ -35,6 +38,8 @@ public class ApointmentConstants {
 		END_HOUR = 17;
 
 		END_MINUTE = 30;
+
+		OTP_TIMEOUT = 15;
 	}
 
 }

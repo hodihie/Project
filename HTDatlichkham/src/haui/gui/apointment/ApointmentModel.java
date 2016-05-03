@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import haui.ConnectionPool;
 import haui.objects.ApointmentObject;
 import haui.objects.RequestSMSObject;
-import haui.objects.UserObject;
 
 /**
  * @author Dinh Hieu
@@ -61,6 +60,10 @@ public class ApointmentModel {
 	
 	public boolean addRequestSMS(RequestSMSObject item) {
 		return this.a.addRequestSMS(item);
+	}
+	
+	public boolean verifyOTP(RequestSMSObject item) {
+		return this.a.verifyOTP(item);
 	}
 
 	// **************************************

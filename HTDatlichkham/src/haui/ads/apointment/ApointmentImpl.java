@@ -47,7 +47,7 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 	@Override
 	public ResultSet getApointments(ApointmentObject similar, int at, byte total) {
 		String sql = " SELECT * FROM tblapointment ";
-		sql += " ORDER BY apointment_id ASC";		
+		sql += " ORDER BY apointment_date DSC, apointment_created_date DSC";		
 		sql += " LIMIT " + at + ", " + total;
 
 		return this.gets(sql);
