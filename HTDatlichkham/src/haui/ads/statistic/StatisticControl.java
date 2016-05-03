@@ -6,16 +6,13 @@ package haui.ads.statistic;
 import java.util.ArrayList;
 
 import haui.ConnectionPool;
-import haui.ads.doctor.DoctorLibrary;
-import haui.ads.doctor.DoctorModel;
-import haui.objects.DoctorObject;
 
 /**
  * @author Dinh Hieu
  *
  */
 public class StatisticControl {
-	
+
 	private StatisticModel sm;
 
 	/**
@@ -24,7 +21,7 @@ public class StatisticControl {
 	public StatisticControl(ConnectionPool cp) {
 		this.sm = new StatisticModel(cp);
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -44,16 +41,14 @@ public class StatisticControl {
 		this.sm.releaseConnection();
 	}
 
-	// ************************************************	
-	
-	public String getSeries(String currentDate) {
-		ArrayList items = this.sm.getStatisticItems(currentDate);
-		return StatisticLibrary.getSeries(items);
+	// ************************************************
+	public String getCategory(String currentDate, int number) {
+		return StatisticLibrary.getCategory(currentDate, number);
 	}
-	
-	public String getCategory(String currentDate) {
-		ArrayList items = this.sm.getStatisticItems(currentDate);
-		return StatisticLibrary.getCategory(items);
+
+	public String getSeries(String currentDate, int number) {
+		ArrayList items = this.sm.getStatisticItems(currentDate, number);
+		return StatisticLibrary.getSeries(items, number);
 	}
 
 }

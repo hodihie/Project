@@ -12,5 +12,5 @@ import haui.ShareControl;
  *
  */
 public interface Statistic extends ShareControl {
-	public ResultSet[] getApointmentStatistics(String currentDate);
+	public ResultSet[] getApointmentStatistics(String currentDate, int number);
 }

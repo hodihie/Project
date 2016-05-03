@@ -5,7 +5,7 @@ package haui.ads.statistic;
 
 import java.util.ArrayList;
 
-import haui.objects.DoctorObject;
+import haui.library.DateUtils;
 
 /**
  * @author Dinh Hieu
@@ -20,25 +20,45 @@ public class StatisticLibrary {
 
 	}
 
-	public static String getCategory(ArrayList<StatisticItem> items) {
-		String tmp = "[";
-		int i = 0;
-		for (StatisticItem item : items) {
+	public static String getCategory(String currentDate, int number) {
 
-			tmp += item.getNumberApointment() + ": " + item.getNumberPatient() + "<br/>";
+		StringBuilder tmp = new StringBuilder("[");
+
+		for (int i = number - 1; i >= 0; i--) {
+
+			tmp.append("'");
+			tmp.append(DateUtils.changeDateFormat(DateUtils.addDay(currentDate, -i), DateUtils.YYYY_MM_DD_HH_MM,
+					DateUtils.DISPLAY_DATE));
+			tmp.append("'");
+			if (i != 0) {
+				tmp.append(",");
+			}
 
 		}
-		return tmp;
+		tmp.append("]");
+		return tmp.toString();
 	}
 
-	public static String getSeries(ArrayList<StatisticItem> items) {
-		String tmp = "";
-		int i = 0;
+	public static String getSeries(ArrayList<StatisticItem> items, int number) {
+		StringBuilder tmp = new StringBuilder();
+		tmp.append("[{name: 'Số bệnh nhân', data: [");
+		for (int i = number-1; i >= 0; i--) {
+			tmp.append(items.get(i).getNumberPatient());
+			if(i!=0){
+				tmp.append(", ");
+			}
+		}
+		tmp.append("]},");
+		tmp.append("{name: 'Số lịch khám', data: [");
+		for (int i = number-1; i >= 0; i--) {
+			tmp.append(items.get(i).getNumberApointment());
+			if(i!=0){
+				tmp.append(", ");
+			}
+		}
+		tmp.append("]}]");
 
-		tmp += "[{name: 'Số bệnh nhân', data: ["+items.get(2).getNumberPatient()+", "+items.get(1).getNumberPatient()+", "+items.get(0).getNumberPatient()+"]},";
-		tmp += "{name: 'Số lịch khám', data: ["+items.get(2).getNumberApointment()+", "+items.get(1).getNumberApointment()+", "+items.get(0).getNumberApointment()+"]}]";
-
-		return tmp;
+		return tmp.toString();
 	}
 
 }

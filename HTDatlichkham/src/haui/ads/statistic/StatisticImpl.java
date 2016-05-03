@@ -28,17 +28,15 @@ public class StatisticImpl extends BasicImpl implements Statistic {
 	 * @see haui.ads.statistic.Statistic#getStatistics()
 	 */
 	@Override
-	public ResultSet[] getApointmentStatistics(String currentDate) {
-		// TODO
-		String[] sqls ={
-			" SELECT COUNT(distinct a.apointment_patient_id) AS totalPatient, COUNT(a.apointment_id) AS totalApointment from tblapointment a, tblpatient p  WHERE p.patient_id = a.apointment_patient_id and apointment_date > '" + currentDate + "' and apointment_date < '" + DateUtils.addDay(currentDate, +1) + "'",
-			" SELECT COUNT(distinct a.apointment_patient_id) AS totalPatient, COUNT(a.apointment_id) AS totalApointment from tblapointment a, tblpatient p  WHERE p.patient_id = a.apointment_patient_id and apointment_date > '" + DateUtils.addDay(currentDate, -1) + "' and apointment_date < '" + currentDate + "'",
-			" SELECT COUNT(distinct a.apointment_patient_id) AS totalPatient, COUNT(a.apointment_id) AS totalApointment from tblapointment a, tblpatient p  WHERE p.patient_id = a.apointment_patient_id and apointment_date > '" + DateUtils.addDay(currentDate, -2) + "' and apointment_date < '" + DateUtils.addDay(currentDate, -1) + "'"
-				
-		};
+	public ResultSet[] getApointmentStatistics(String currentDate, int number) {
+		String[] sqls = new String[number];
 		
+		for (int i = 0; i < number; i++) {
+			sqls[i] = " SELECT COUNT(distinct a.apointment_patient_id) AS totalPatient, COUNT(a.apointment_id) AS totalApointment from tblapointment a, tblpatient p  WHERE p.patient_id = a.apointment_patient_id and apointment_date > '"
+					+ DateUtils.addDay(currentDate, -i) + "' and apointment_date < '"
+					+ DateUtils.addDay(currentDate, -i + 1) + "' ";
+		}
 		return this.gets(sqls);
-
 	}
 
 }

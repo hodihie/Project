@@ -44,11 +44,11 @@ public class StatisticModel {
 	}
 
 	// **************************************
-	public ArrayList getStatisticItems(String currentDate) {
+	public ArrayList getStatisticItems(String currentDate, int number) {
 		ArrayList<StatisticItem> items = new ArrayList<>();
 		StatisticItem item = null;
 
-		ResultSet[] rses = this.s.getApointmentStatistics(currentDate);
+		ResultSet[] rses = this.s.getApointmentStatistics(currentDate, number);
 		ResultSet rsDate = null;
 		if (rses.length > 0) {
 			for (int i = 0; i < rses.length; i++) {
@@ -69,11 +69,5 @@ public class StatisticModel {
 			}
 		}
 		return items;
-	}
-	
-	public static void main(String[] args) {
-		ConnectionPool cp= new ConnectionPoolImpl();
-		StatisticModel sm= new StatisticModel(cp);
-		System.out.println(sm.getStatisticItems("201604170000"));
-	}
+	}	
 }
