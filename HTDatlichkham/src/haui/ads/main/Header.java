@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import haui.objects.UserObject;
-import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 /**
  * Servlet implementation class Header
@@ -41,6 +40,7 @@ public class Header extends HttpServlet {
 		out.print("<html>");
 	    out.print("<head>");
 	    out.print("<title>Hệ quản trị nội dung </title>");
+	    out.print("<link rel=\"shortcut icon\" type=\"image/png\" href=\"/adv/imgs/title.ico\" />");
 	    out.print(
 	        "<link rel=\"stylesheet\" href=\"/adv/adcss/layout.css\" type=\"text/css\"/>");
 	    out.print("<script language=\"JavaScript\" src=\"/adv/adjs/user.js\"></script>");	   
@@ -50,7 +50,8 @@ public class Header extends HttpServlet {
 	    out.print("<body>");
 	    out.print("<div id=\"main\">");
 	    out.print("<div class=\"logo\"></div>");
-
+	    //TODO
+	    out.print("<div class=\"logo2\"></div>");
 	    out.print("<div class=\"acc\">");
 	    out.print("<h3>Quyền quản trị</h3>");
 	    out.print("Tên đăng nhập: " + user.getUser_name() + " (" +
@@ -74,8 +75,7 @@ public class Header extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+			throws ServletException, IOException {		
 		doGet(request, response);
 	}
 

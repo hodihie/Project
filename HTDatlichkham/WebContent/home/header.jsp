@@ -5,6 +5,7 @@
 <html>
 <head>
 <title>Bệnh viện Nhân Đạo</title>
+<link rel="shortcut icon" type="image/png" href="/home/imgs/title.ico" />
 <link href="${pageContext.request.contextPath}/home/css/layout.css"
 	rel="stylesheet" type="text/css" />
 
