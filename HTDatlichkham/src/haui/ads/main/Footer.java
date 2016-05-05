@@ -36,8 +36,8 @@ public class Footer extends HttpServlet {
 
 	    out.print("<div class=\"footer\">");
 	    out.print("This CMS is build on J2EE technology.<br/>");
-	    out.print("Develop by Đinh Hieu & Quang Truong Group! <br/>");
-	    out.print("Copyright@ 2015.");
+	    out.print("Develop by Hoang Đinh Hieu ! <br/>");
+	    out.print("© Copyright 2016.");
 	    out.print("</div>");
 	    out.print("</div>");
 	    out.print("</body>");
