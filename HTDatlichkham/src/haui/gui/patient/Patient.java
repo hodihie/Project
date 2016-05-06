@@ -15,6 +15,8 @@ import haui.objects.PatientObject;
 public interface Patient extends ShareControl {
 
 	public int addPatient(PatientObject item);
+	public boolean addPatientCode(PatientObject item);
+	
 	public boolean editPatient(PatientObject item);
 	public boolean delPatient(PatientObject item);
 

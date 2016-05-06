@@ -49,7 +49,7 @@ public class PatientImpl extends BasicImpl implements Patient {
 			pre.setString(1, item.getPatient_fullname());
 			pre.setShort(2, item.getPatient_gender());
 			pre.setString(3, item.getPatient_address());
-			pre.setString(4, item.getPatient_phone());		
+			pre.setString(4, item.getPatient_phone());
 			pre.setString(5, item.getPatient_birthday());
 			pre.setString(6, item.getPatient_code());
 
@@ -58,6 +58,17 @@ public class PatientImpl extends BasicImpl implements Patient {
 
 			if (rs.next()) {
 				generatedKey = rs.getInt(1);
+				String strPatientId = generatedKey + "";
+				StringBuilder patientCode = new StringBuilder("BN");
+				for (int i = 0; i < 10 - strPatientId.length(); i++) {
+					patientCode.append("0");
+				}
+				patientCode.append(generatedKey);
+				item.setPatient_code(patientCode.toString());
+				item.setPatient_id(generatedKey);
+				if (!addPatientCode(item)) {
+					return -1;
+				}
 			}
 
 		} catch (SQLException e) {
@@ -86,7 +97,7 @@ public class PatientImpl extends BasicImpl implements Patient {
 			pre.setString(1, item.getPatient_fullname());
 			pre.setShort(2, item.getPatient_gender());
 			pre.setString(3, item.getPatient_address());
-			pre.setString(4, item.getPatient_phone());			
+			pre.setString(4, item.getPatient_phone());
 			pre.setString(5, item.getPatient_birthday());
 			pre.setString(6, item.getPatient_code());
 
@@ -172,6 +183,32 @@ public class PatientImpl extends BasicImpl implements Patient {
 		sql += " ORDER BY patient_fullname ASC ";
 
 		return this.gets(sql);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see haui.gui.patient.Patient#addPatientCade(java.lang.String)
+	 */
+	@Override
+	public boolean addPatientCode(PatientObject item) {
+		String sql = "UPDATE tblpatient SET patient_code=? ";
+		sql += " WHERE patient_id=? ";
+
+		try {
+			// bien dich
+			PreparedStatement pre = this.con.prepareStatement(sql);
+
+			// Truyen gia tri
+			pre.setString(1, item.getPatient_code());
+			pre.setInt(2, item.getPatient_id());
+
+			return this.edit(pre);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

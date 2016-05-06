@@ -30,7 +30,7 @@ public class MakeApointmentAction extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public MakeApointmentAction() {
-		super();		
+		super();
 	}
 
 	/**
@@ -58,12 +58,12 @@ public class MakeApointmentAction extends HttpServlet {
 		String stGender = request.getParameter("rdGender");
 		String birthday = request.getParameter("txtBirthday");
 		String address = request.getParameter("txtAddress");
-		String phone = Utilities.getMobilePhone(request, "txtPhone");	
+		String phone = Utilities.getMobilePhone(request, "txtPhone");
 
 		if (doctorId > 0 && !date.equalsIgnoreCase("") && !symptom.equalsIgnoreCase("") && !name.equalsIgnoreCase("")
 				&& !stGender.equalsIgnoreCase("") && !birthday.equalsIgnoreCase("") && !address.equalsIgnoreCase("")
 				&& !phone.equalsIgnoreCase("")) {
-			
+
 			String createdDate = DateUtils.getCurrentDateTime();
 
 			short gender = Short.parseShort(stGender);
@@ -73,28 +73,29 @@ public class MakeApointmentAction extends HttpServlet {
 			nPatient.setPatient_gender(gender);
 			nPatient.setPatient_birthday(birthday);
 			nPatient.setPatient_address(Utilities.encode(address));
-			nPatient.setPatient_phone(phone);			
+			nPatient.setPatient_phone(phone);
 
 			// tim bo quan ly ket noi
 			ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("c_pool");
-			PatientControl cc = new PatientControl(cp);
+			PatientControl pc = new PatientControl(cp);
 			if (cp == null) {
-				getServletContext().setAttribute("c_pool", cc.getConnectionPool());
+				getServletContext().setAttribute("c_pool", pc.getConnectionPool());
 			}
 
 			// thuc hien
-			int cusId;
-			cusId = cc.addPatient(nPatient);
+			int patientId = pc.addPatient(nPatient);
 
 			// tra ve ket noi
-			cc.releaseConnection();
+			pc.releaseConnection();
 
 			// kiem tra ket qua thuc hien
-			if (cusId > 0) {
+			if (patientId > 0) {
+
 				ApointmentObject nApointment = new ApointmentObject();
 				nApointment.setApointment_doctor_id(doctorId);
-				nApointment.setApointment_date(DateUtils.changeDateFormat(date, DateUtils.DISPLAY_DATETIME, DateUtils.YYYY_MM_DD_HH_MM));
-				nApointment.setApointment_patient_id(cusId);				
+				nApointment.setApointment_date(
+						DateUtils.changeDateFormat(date, DateUtils.DISPLAY_DATETIME, DateUtils.YYYY_MM_DD_HH_MM));
+				nApointment.setApointment_patient_id(patientId);
 				nApointment.setApointment_symptom(Utilities.encode(symptom));
 				nApointment.setApointment_created_date(createdDate);
 
@@ -117,7 +118,7 @@ public class MakeApointmentAction extends HttpServlet {
 					DoctorObject doctor = dc.getDoctorObject(doctorId);
 
 					HttpSession session = request.getSession();
-					session.setAttribute("patientCode", "BN" + cusId);
+					session.setAttribute("patientCode", pc.getPatientObject(patientId).getPatient_code());
 					session.setAttribute("room", doctor.getDoctor_workroom());
 					String datetime = date;
 					session.setAttribute("datetime", datetime);
