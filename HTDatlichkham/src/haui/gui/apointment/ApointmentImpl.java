@@ -62,7 +62,6 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 	 */
 	@Override
 	public ResultSet getNextApointmentsByDocId(int docId, String currentDate) {
-		// TODO
 		String sql = " SELECT * FROM tblapointment where apointment_doctor_id=? and apointment_date > '" + currentDate
 				+ "' ";
 		sql += " ORDER BY apointment_date ASC ";
@@ -168,8 +167,8 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 	 */
 	@Override
 	public boolean addRequestSMS(RequestSMSObject item) {
-		String sql = "INSERT INTO tblrequestsms(req_Phone, req_send_date, req_otp, req_otp_expire) ";
-		sql += " VALUE(?,?,?,?)";
+		String sql = "INSERT INTO tblrequestsms(req_Phone, req_send_date, req_otp, req_otp_expire, req_isactive) ";
+		sql += " VALUE(?,?,?,?,?)";
 
 		try {
 			// bien dich
@@ -180,6 +179,7 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 			pre.setString(2, item.getReq_sendDate());
 			pre.setString(3, item.getReq_otp());
 			pre.setString(4, item.getReq_otpExpire());
+			pre.setByte(5, (byte) 1);
 
 			return this.add(pre);
 
@@ -198,7 +198,7 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 	@Override
 	public boolean verifyOTP(RequestSMSObject item) {
 		String sql = " SELECT * FROM tblrequestsms ";
-		sql += " WHERE req_Phone = ? and req_otp = ? and req_otp_expire > ?";
+		sql += " WHERE req_Phone = ? and req_otp = ? and req_otp_expire > ? and req_isactive= ?";
 		sql += " ORDER BY req_send_date ASC ";
 
 		try {
@@ -206,12 +206,14 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 			PreparedStatement pre = this.con.prepareStatement(sql);
 
 			// Truyen gia tri
-			pre.setString(1, item.getReq_PhoneNumber());			
+			pre.setString(1, item.getReq_PhoneNumber());
 			pre.setString(2, item.getReq_otp());
 			pre.setString(3, item.getReq_otpExpire());
+			pre.setByte(4, (byte) 1);
 
 			ResultSet rs = pre.executeQuery();
 			if (rs.next()) {
+				changeSMSStatus(item);
 				return true;
 			}
 
@@ -219,6 +221,34 @@ public class ApointmentImpl extends BasicImpl implements Apointment {
 			e.printStackTrace();
 		}
 
+		return false;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see haui.gui.apointment.Apointment#changeSMSStatus()
+	 */
+	@Override
+	public boolean changeSMSStatus(RequestSMSObject item) {
+
+		String sql = " UPDATE tblrequestsms set req_isactive=? ";
+		sql += " WHERE req_Phone=? and req_otp=?";
+
+		try {
+			// bien dich
+			PreparedStatement pre = this.con.prepareStatement(sql);
+
+			// Truyen gia tri
+			pre.setByte(1, (byte) 0);
+			pre.setString(2, item.getReq_PhoneNumber());
+			pre.setString(3, item.getReq_otp());
+
+			return this.edit(pre);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 

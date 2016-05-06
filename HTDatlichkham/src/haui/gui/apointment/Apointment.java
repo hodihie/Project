@@ -24,6 +24,7 @@ public interface Apointment extends ShareControl{
 	public ResultSet getApointments(ApointmentObject similar);
 	
 	public boolean addRequestSMS(RequestSMSObject item);
+	public boolean changeSMSStatus(RequestSMSObject item);
 	
 	public boolean verifyOTP(RequestSMSObject item);
 }

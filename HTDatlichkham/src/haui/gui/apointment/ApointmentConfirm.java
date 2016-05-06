@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -18,6 +17,7 @@ import haui.ConnectionPool;
 import haui.library.ApointmentConstants;
 import haui.library.DateUtils;
 import haui.library.StringUtils;
+import haui.library.Utilities;
 import haui.objects.RequestSMSObject;
 
 /**
@@ -46,7 +46,7 @@ public class ApointmentConfirm extends HttpServlet {
 
 		String mobile = request.getParameter("mobile");
 		String currDate = DateUtils.getCurrentDateTime();
-		String otp = generateOTP(6);		
+		String otp = generateOTP(6);
 		StringBuilder responseInfo = new StringBuilder("Khong thanh cong.\n");
 
 		ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("c_pool");
@@ -68,8 +68,7 @@ public class ApointmentConfirm extends HttpServlet {
 				responseInfo.append("Ma xac nhan cua ban la ");
 				responseInfo.append(otp);
 				responseInfo.append("\n");
-				responseInfo.append(
-						"Mã xac nhan co tac dung trong vong 5 phut ke tu khi nhan duoc tin nhan nay!");
+				responseInfo.append("Ma xac nhan co tac dung trong vong 5 phut ke tu khi nhan duoc tin nhan nay!");
 			}
 		}
 
@@ -102,9 +101,9 @@ public class ApointmentConfirm extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType(CONTENT_TYPE);
 
-		String phone = request.getParameter("phone");
-		String currentDate = DateUtils.getCurrentDateTime();		
-		String otp = request.getParameter("otp");;
+		String phone = Utilities.getMobilePhone(request, "phone");
+		String currentDate = DateUtils.getCurrentDateTime();
+		String otp = request.getParameter("otp");
 
 		RequestSMSObject item = new RequestSMSObject();
 		item.setReq_PhoneNumber(phone);

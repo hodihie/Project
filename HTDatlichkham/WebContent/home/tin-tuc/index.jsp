@@ -14,7 +14,7 @@
 	<div class="news-path">
 		<p>
 			<a href="${pageContext.request.contextPath}/home/">Trang chủ</a>
-			&nbsp&nbsp >> &nbsp&nbsp <a href="/home/tin-tuc/">Tin tức</a>
+			&nbsp;&nbsp; >> &nbsp;&nbsp; <a href="/home/tin-tuc/">Tin tức</a>
 		</p>
 	</div>
 	<div class="view-news">

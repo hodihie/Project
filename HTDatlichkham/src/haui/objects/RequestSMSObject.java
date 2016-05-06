@@ -12,6 +12,7 @@ public class RequestSMSObject {
 	private String req_sendDate;
 	private String req_otp;
 	private String req_otpExpire;
+	private byte req_isActive;
 
 	/**
 	 * 
@@ -25,12 +26,15 @@ public class RequestSMSObject {
 	 * @param req_sendDate
 	 * @param req_otp
 	 * @param req_otpExpire
+	 * @param req_isActive
 	 */
-	public RequestSMSObject(String req_PhoneNumber, String req_sendDate, String req_otp, String req_otpExpire) {
+	public RequestSMSObject(String req_PhoneNumber, String req_sendDate, String req_otp, String req_otpExpire,
+			byte req_isActive) {
 		this.req_PhoneNumber = req_PhoneNumber;
 		this.req_sendDate = req_sendDate;
 		this.req_otp = req_otp;
 		this.req_otpExpire = req_otpExpire;
+		this.req_isActive = req_isActive;
 	}
 
 	/**
@@ -91,6 +95,21 @@ public class RequestSMSObject {
 	 */
 	public void setReq_otpExpire(String req_otpExpire) {
 		this.req_otpExpire = req_otpExpire;
+	}
+
+	/**
+	 * @return the req_isActive
+	 */
+	public byte getReq_isActive() {
+		return req_isActive;
+	}
+
+	/**
+	 * @param req_isActive
+	 *            the req_isActive to set
+	 */
+	public void setReq_isActive(byte req_isActive) {
+		this.req_isActive = req_isActive;
 	}
 
 }

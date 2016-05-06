@@ -43,7 +43,7 @@ public class ApointmentConstants {
 
 		END_MINUTE = 30;
 
-		OTP_TIMEOUT = 15;
+		OTP_TIMEOUT = 5;
 	}
 
 }

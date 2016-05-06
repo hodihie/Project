@@ -1,8 +1,6 @@
 package haui.gui.apointment;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import haui.ConnectionPool;
-import haui.gui.patient.PatientControl;
 import haui.gui.doctor.DoctorControl;
+import haui.gui.patient.PatientControl;
 import haui.library.DateUtils;
 import haui.library.Utilities;
 import haui.objects.ApointmentObject;
@@ -60,7 +58,7 @@ public class MakeApointmentAction extends HttpServlet {
 		String stGender = request.getParameter("rdGender");
 		String birthday = request.getParameter("txtBirthday");
 		String address = request.getParameter("txtAddress");
-		String phone = request.getParameter("txtPhone");		
+		String phone = Utilities.getMobilePhone(request, "txtPhone");	
 
 		if (doctorId > 0 && !date.equalsIgnoreCase("") && !symptom.equalsIgnoreCase("") && !name.equalsIgnoreCase("")
 				&& !stGender.equalsIgnoreCase("") && !birthday.equalsIgnoreCase("") && !address.equalsIgnoreCase("")

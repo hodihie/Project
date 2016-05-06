@@ -76,6 +76,19 @@ public class Utilities {
 		return value;
 	}
 
+	// get mobile phone
+	public static String getMobilePhone(ServletRequest request, String name) {
+		StringBuilder mobile = new StringBuilder();
+		String strValue = request.getParameter(name);
+		if (strValue != null && !strValue.equalsIgnoreCase("")) {
+			strValue = strValue.substring(1);
+			mobile.append("84");
+			mobile.append(strValue);
+		}
+
+		return mobile.toString();
+	}
+
 	// check value
 	public static String checkValue(String value) {
 		if (value != null && !value.equalsIgnoreCase("")) {
@@ -119,7 +132,7 @@ public class Utilities {
 
 	// get total page
 	public static byte getTotalperpage(javax.servlet.http.HttpServletRequest request, String name, String pageAt) {
-		//ngam dinh so dong 1 trang la 15
+		// ngam dinh so dong 1 trang la 15
 		return Utilities.getTotalperpage(request, name, pageAt, (byte) 15);
 	}
 
@@ -212,19 +225,19 @@ public class Utilities {
 		}
 		return tmp;
 	}
-	
+
 	public static int getCount(ResultSet rstotal) {
-	    if (rstotal != null) {
-	      try {
-	        if (rstotal.next()) {
-	          return rstotal.getInt("total");
-	        }
-	        rstotal.close();
-	      } catch (SQLException ex) {
-	        ex.printStackTrace();
-	      }
-	    }
-	    return 0;
-	  }
+		if (rstotal != null) {
+			try {
+				if (rstotal.next()) {
+					return rstotal.getInt("total");
+				}
+				rstotal.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return 0;
+	}
 
 }
