@@ -69,7 +69,7 @@ public class ApointmentConfirm extends HttpServlet {
 				responseInfo.append(otp);
 				responseInfo.append("\n");
 				responseInfo.append(
-						"Hay tro lai trang web de xac nhan dat lich kham trong vong 5 phut ke tu khi nhan duoc tin nhan nay!");
+						"Mã xac nhan co tac dung trong vong 5 phut ke tu khi nhan duoc tin nhan nay!");
 			}
 		}
 

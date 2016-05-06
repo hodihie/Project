@@ -26,10 +26,10 @@ public class SpecialityLibrary {
 			tmp += "<td>" + item.getSpeciality_place() + "</td>";
 			tmp += "<td>" + item.getSpeciality_phone() + "</td>";
 
-			tmp += "<td class=ED><a href=\"/adv/speciality/ae?id=" + item.getSpeciality_id() + "  \">Sửa</a></td>";
+			tmp += "<td class=ED><a href=\"/adv/speciality/ae?id=" + item.getSpeciality_id() + "  \"><img src=\"/adv/imgs/icons/edit.png\" class=\"icon\"></a></td>";
 
 			tmp += "<td class=ED><a href=\"/adv/speciality/del?id=" + item.getSpeciality_id()
-					+ "\"  onclick=\"if(!confirm('Bạn có muốn xóa bản ghi này không?')) return false;\" >Xóa</a></td>";
+					+ "\"  onclick=\"if(!confirm('Bạn có muốn xóa bản ghi này không?')) return false;\" ><img src=\"/adv/imgs/icons/delete.png\" class=\"icon\"></a></td>";
 
 			tmp += "<td class=ID>" + item.getSpeciality_id() + "</td>";
 			tmp += "</tr>";

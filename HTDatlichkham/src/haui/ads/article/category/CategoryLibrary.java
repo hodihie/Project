@@ -23,8 +23,8 @@ public class CategoryLibrary {
 			tmp += "<td>" + item.getSection_name() + "</td>";
 			tmp += "<td>" + item.getCategory_created_author_id() + "</td>";
 			tmp += "<td>" + item.getCategory_notes() + "</td>";
-			tmp += "<td class=ED><a href=\"\">Sửa</a></td>";
-			tmp += "<td class=ED><a href=\"\">Xóa</a></td>";
+			tmp += "<td class=ED><a href=\"\"><img src=\"/adv/imgs/icons/edit.png\" class=\"icon\"></a></td>";
+			tmp += "<td class=ED><a href=\"\"><img src=\"/adv/imgs/icons/delete.png\" class=\"icon\"></a></td>";
 			tmp += "<td class=ID>" + item.getCategory_id() + "</td>";
 			tmp += "</tr>";
 

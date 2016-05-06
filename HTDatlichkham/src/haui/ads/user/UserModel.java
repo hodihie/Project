@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import haui.ConnectionPool;
 import haui.ConnectionPoolImpl;
+import haui.library.Utilities;
 import haui.objects.UserObject;
 
 /**
@@ -17,6 +18,7 @@ import haui.objects.UserObject;
  */
 public class UserModel {
 	private User u;
+	private int total = 0;
 
 	/**
 	 * 
@@ -54,6 +56,11 @@ public class UserModel {
 	}
 
 	// ***************************************************/
+
+	public int getCount() {
+		return this.total;
+	}
+
 	// chuyen the tu ResultSet thanh doi tuong
 	public UserObject getUserObject(int id) {
 		UserObject item = null;
@@ -117,7 +124,16 @@ public class UserModel {
 
 		// lay du lieu
 		int at = (page - 1) * totalperpage;
-		ResultSet rs = this.u.getUsers(similar, at, totalperpage);
+		ResultSet[] rses = this.u.getUsers(similar, at, totalperpage);
+
+		ResultSet rs = null;
+		ResultSet rstotal = null;
+		if (rses != null) {
+			rs = rses[0];
+			rstotal = rses[1];
+		}
+		this.total = Utilities.getCount(rstotal);
+
 		if (rs != null) {
 			try {
 				while (rs.next()) {
@@ -142,21 +158,4 @@ public class UserModel {
 		return items;
 	}
 
-	// *********************************************************************/
-	public static void main(String[] args) {
-		ConnectionPool cp = new ConnectionPoolImpl();
-		UserModel um = new UserModel(cp);
-
-		// lay danh sach doi tuong
-		ArrayList<UserObject> items = um.getUserObjects(null, 1, (byte) 15);
-		// tra ve ket noi
-		um.releaseConnection();
-
-		// hien thi
-		for (UserObject item : items) {
-			System.out.print(item.getUser_id() + "\t");
-			System.out.print(item.getUser_name() + "\t");
-			System.out.println(item.getUser_fullname());
-		}
-	}
 }

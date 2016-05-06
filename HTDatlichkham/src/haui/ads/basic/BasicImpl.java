@@ -200,14 +200,14 @@ public class BasicImpl implements Basic {
 	public ResultSet gets(String sql) {
 		return this.get(sql, 0);
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see haui.ads.basic.Basic#gets(java.lang.String)
 	 */
 	@Override
-	public ResultSet gets(String sql,int value) {
+	public ResultSet gets(String sql, int value) {
 		return this.get(sql, value);
 	}
 
@@ -223,6 +223,34 @@ public class BasicImpl implements Basic {
 			tmp[i] = this.gets(sqls[i]);
 		}
 		return tmp;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see haui.ads.basic.Basic#gets(java.lang.String[], int)
+	 */
+	@Override
+	public ResultSet[] gets(String[] sqlGets, int value) {
+		ResultSet[] rs_tmps = new ResultSet[sqlGets.length];
+		PreparedStatement preGet = null;
+
+		try {
+			for (int i = 0; i < sqlGets.length; i++) {
+				preGet = this.con.prepareStatement(sqlGets[i], ResultSet.TYPE_SCROLL_SENSITIVE,
+						ResultSet.CONCUR_UPDATABLE);
+				if (value != 0) {
+					preGet.setInt(1, value);
+				}
+				rs_tmps[i] = preGet.executeQuery();
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			preGet = null;
+			sqlGets = null;
+		}
+		return rs_tmps;
 	}
 
 }

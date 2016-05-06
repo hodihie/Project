@@ -22,8 +22,8 @@ public class SectionLibrary {
 			tmp += " <td>" + item.getSection_created_date() + "</td> ";
 			tmp += " <td>" + item.getSection_created_author_id() + "</td> ";
 			tmp += " <td>" + item.getSection_notes() + "</td> ";
-			tmp += " <td class=ED><a href=\"\">Sửa</a></td> ";
-			tmp += " <td class=ED><a href=\"\">Xóa</a></td> ";
+			tmp += " <td class=ED><a href=\"\"><img src=\"/adv/imgs/icons/edit.png\" class=\"icon\"></a></td> ";
+			tmp += " <td class=ED><a href=\"\"><img src=\"/adv/imgs/icons/delete.png\" class=\"icon\"></a></td> ";
 			tmp += " <td class=ID>" + item.getSection_id() + "</td> ";
 			tmp += "</tr>";
 			//tmp += " \n";

@@ -6,7 +6,6 @@ package haui.ads.user;
 import java.util.ArrayList;
 
 import haui.ConnectionPool;
-import haui.ConnectionPoolImpl;
 import haui.objects.UserObject;
 
 /**
@@ -59,20 +58,9 @@ public class UserControl {
 	}
 
 	// ***********************************************/
-	public String viewUsers(UserObject similar, int page, byte total, UserObject user) {
-		ArrayList items = this.um.getUserObjects(similar, page, total);
-		return UserLibrary.viewUsers(items,user);
-	}
-
-	public static void main(String[] args) {
-		ConnectionPool cp = new ConnectionPoolImpl();
-		// tao doi tuong thuc thi chuc nang
-		UserControl uc = new UserControl(cp);
-		// lay du lieu html hien thi
-		//String viewusers = uc.viewUsers(null, 1, (byte)15);
-		// tra ve ket noi
-		uc.releaseConnection();
-		// hien thi
-		//System.out.println(viewusers);
+	public String viewUsers(UserObject similar, int page, UserObject user, byte totalperpage) {
+		ArrayList items = this.um.getUserObjects(similar, page, totalperpage);
+		int total = this.um.getCount();
+		return UserLibrary.viewUsers(items, user, total, page, totalperpage);
 	}
 }

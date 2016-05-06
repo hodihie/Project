@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import haui.ConnectionPool;
+import haui.library.ApointmentConstants;
+import haui.library.Utilities;
 import haui.objects.UserObject;
 
 /**
@@ -25,7 +27,7 @@ public class UserView extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public UserView() {
-		super();		
+		super();
 	}
 
 	/**
@@ -48,6 +50,8 @@ public class UserView extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType(CONTENT_TYPE);
 		PrintWriter out = response.getWriter();
+		int page = Utilities.getPage(request);
+		byte totalperpage = Utilities.getTotalperpage(request, "totaluser", "pageuser");
 
 		// tim bo quanly ket noi
 		ConnectionPool cp = (ConnectionPool) getServletContext().getAttribute("c_pool");
@@ -55,14 +59,14 @@ public class UserView extends HttpServlet {
 		if (cp == null) {
 			getServletContext().setAttribute("c_pool", uc.getConnectionPool());
 		}
-		
-		//tao doi tuong bo loc
-		UserObject similar=new UserObject();
-		//dua thong tin quyen cua doi tuong dang nhap
+
+		// tao doi tuong bo loc
+		UserObject similar = new UserObject();
+		// dua thong tin quyen cua doi tuong dang nhap
 		similar.setUser_permission(user.getUser_permission());
 
 		// lay du lieu da duoc tao cau truc html
-		String viewUsers = uc.viewUsers(similar, 1, (byte) 15, user);
+		String viewUsers = uc.viewUsers(similar, page, user, totalperpage);
 
 		// tra ve ket noi
 		uc.releaseConnection();
@@ -74,11 +78,19 @@ public class UserView extends HttpServlet {
 		}
 
 		out.print("<div class=\"view\">");
+		out.print("<form name=\"frmUser\" method=\"POST\" action=\"\">");
+		out.print("<table width=100% cellspacing=0 id=\"viewnumber\">");
+		out.print(
+				"<tr><td><b>Hiển thị</b>&nbsp;<select name=\"slcViewNumber\" onChange=\"refreshViewNumber(this.form,'/adv/user/view')\">");
+		out.print(Utilities.viewOptions(ApointmentConstants.VIEW_VALUES, totalperpage));
+		out.print("</select> người sử dụng / trang</td>");
+		out.print(
+				"<td align=\"right\" ><a href=\"/adv/user/ae\" >Thêm&nbsp;<img src=\"/adv/imgs/icons/add.png\" class=\"icon\"/></a></td></tr></table>");
+
 		out.print("<table cellspacing=0>");
 
 		out.print("<tr>");
 		out.print("<td colspan=9>");
-		out.print("<a href=\"/adv/user/ae\">Thêm mới</a>");		
 		out.print("</td>");
 		out.print("</tr>");
 
@@ -95,7 +107,7 @@ public class UserView extends HttpServlet {
 
 		out.print(viewUsers);
 
-		out.print("</table>");
+		out.print("</form>");
 		out.print("</div>");
 
 		// goi footer

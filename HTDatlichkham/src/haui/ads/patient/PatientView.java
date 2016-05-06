@@ -75,7 +75,7 @@ public class PatientView extends HttpServlet {
 		out.print("<table cellspacing=0>");
 
 		out.print("<tr>");
-		out.print("<td colspan=9>");
+		out.print("<td colspan=8>");
 		out.print("</td>");
 		out.print("</tr>");
 

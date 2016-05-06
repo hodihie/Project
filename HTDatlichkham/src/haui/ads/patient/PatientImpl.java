@@ -170,29 +170,10 @@ public class PatientImpl extends BasicImpl implements Patient {
 	public ResultSet getPatients(PatientObject similar, int at, byte total) {
 		String sql = "SELECT * FROM tblpatient ";
 		sql += " ORDER BY patient_fullname ASC ";
+		sql += " LIMIT " + at + ", " + total;
 
 		return this.gets(sql);
 	}
 
-	// test
-	// public static void main(String[] args) {
-	// ConnectionPool cp = new ConnectionPoolImpl();
-	// Patient u = new PatientImpl(cp);
-	//
-	// ResultSet rs = u.getPatients(null);
-	// u.releaseConnection();
-	//
-	// try {
-	// while (rs.next()) {
-	// System.out.print(rs.getInt("Patient_id") + "\t");
-	// System.out.print(rs.getString("Patient_fullname") + "\t");
-	// System.out.println(rs.getString("Patient_email") + "\t");
-	//
-	// }
-	// } catch (SQLException e) {
-	//
-	// e.printStackTrace();
-	// }
-	// }
-
+	
 }

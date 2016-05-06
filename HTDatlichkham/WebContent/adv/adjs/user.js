@@ -178,3 +178,9 @@ function saveUser(fn){
 		fn.submit();
 	}
 }
+
+function refreshViewNumber(fn, url){
+	fn.method = "POST";
+	fn.action = url;
+	fn.submit();
+}

@@ -24,4 +24,5 @@ public interface Basic extends ShareControl {
 	public ResultSet gets(String sql);// lay nhieu ban ghi trong 1 resulset
 	public ResultSet gets(String sql,int value);
 	public ResultSet[] gets(String[] sqls);// lay nhieu resultset
+	public ResultSet[] gets(String[] sqlGets, int value) ;
 }

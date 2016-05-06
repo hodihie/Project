@@ -1,5 +1,6 @@
 ﻿*{
 	margin:0;
+	padding:0
 }
 
 body{
@@ -40,3 +41,8 @@ a:hover{
 .clr{
 	clear: both;
 }
+
+#pagelink{background: #888; margin:10px 0; text-align: left; padding: 6px; font: bold 10px Tahoma; color: #fff;}
+.plinks span{background: #eee; padding: 3px 7px 3px 8px; margin: 8px 2px; color: #22f; }
+.plinks span:hover{background: #bbb;}
+.plinks:hover{text-decoration: none;}

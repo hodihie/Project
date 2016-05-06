@@ -24,8 +24,8 @@ public class ArticleLibrary {
 			tmp += "<td>" + item.getSection_name() + "</td>";
 			tmp += "<td>" + item.getArticle_author_name() + "</td>";
 			tmp += "<td>" + item.getArticle_visited() + "</td>";
-			tmp += "<td class=ED><a href=\"/adv/article/ae?id="+item.getArticle_id()+"\">Sửa</a></td>";
-			tmp += "<td class=ED><a href=\"/adv/artilce/del?id="+item.getArticle_id()+"  onclick=\"if(!confirm('Bạn có muốn xóa bản ghi này không?')) return false;\">Xóa</a></td>";
+			tmp += "<td class=ED><a href=\"/adv/article/ae?id="+item.getArticle_id()+"\"><img src=\"/adv/imgs/icons/edit.png\" class=\"icon\"></a></td>";
+			tmp += "<td class=ED><a href=\"/adv/artilce/del?id="+item.getArticle_id()+"  onclick=\"if(!confirm('Bạn có muốn xóa bản ghi này không?')) return false;\"><img src=\"/adv/imgs/icons/delete.png\" class=\"icon\"></a></td>";
 			tmp += "<td class=ID>" + item.getArticle_id() + "</td>";
 			tmp += "</tr>";
 

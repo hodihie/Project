@@ -10,6 +10,10 @@
 	margin-top: 200px;
 	border-radius: 5px;
 }
+#loginview .icon{
+	width: 20px;
+	height: 20px;
+}
 
 body {
 	background: url("../imgs/login_bg.jpg");

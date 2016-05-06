@@ -50,14 +50,15 @@ public class Header extends HttpServlet {
 	    out.print("<body>");
 	    out.print("<div id=\"main\">");
 	    out.print("<div class=\"logo\"></div>");
-	    //TODO
+	   
 	    out.print("<div class=\"logo2\"></div>");
+	    out.print("<div class=\"language\"><a href=\"#\"><h3>English</h3></a></div>");
 	    out.print("<div class=\"acc\">");
 	    out.print("<h3>Quyền quản trị</h3>");
 	    out.print("Tên đăng nhập: " + user.getUser_name() + " (" +
 	              user.getUser_fullname() + ")&nbsp;&nbsp;|&nbsp;&nbsp;");
-	    out.print("<a href=\"#\">Xem thông tin</a>&nbsp;&nbsp;|&nbsp;&nbsp;");
-	    out.print("<a href=\"#\">Thoát</a>");
+	    out.print("<a href=\"#\"><img src=\"/adv/imgs/icons/infor.png\" class=\"icon\"></a>&nbsp;&nbsp;|&nbsp;&nbsp;");
+	    out.print("<a href=\"/adv/user/logout\"><img src=\"/adv/imgs/icons/logout.png\" class=\"icon\"></a>");
 	    out.print("</div>");
 
 	    out.print("<div class=\"clr\"></div>");

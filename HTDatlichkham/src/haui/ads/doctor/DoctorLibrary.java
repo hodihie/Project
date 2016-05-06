@@ -30,10 +30,10 @@ public class DoctorLibrary {
 			tmp += "<td>" + item.getDoctor_age() + "</td>";
 			tmp += "<td>" + gender + "</td>";
 			tmp += "<td>" + item.getDoctor_workroom() + "</td>";
-			tmp += "<td class=ED><a href=\"/adv/doctor/ae?id=" + item.getDoctor_id() + "  \">Sửa</a></td>";
+			tmp += "<td class=ED><a href=\"/adv/doctor/ae?id=" + item.getDoctor_id() + "  \"><img src=\"/adv/imgs/icons/edit.png\" class=\"icon\"></a></td>";
 
 			tmp += "<td class=ED><a href=\"/adv/doctor/del?id=" + item.getDoctor_id()
-					+ "\"  onclick=\"if(!confirm('Bạn có muốn xóa bản ghi này không?')) return false;\" >Xóa</a></td>";
+					+ "\"  onclick=\"if(!confirm('Bạn có muốn xóa bản ghi này không?')) return false;\" ><img src=\"/adv/imgs/icons/delete.png\" class=\"icon\"></a></td>";
 
 			tmp += "<td class=ID>" + item.getDoctor_id() + "</td>";
 			tmp += "</tr>";

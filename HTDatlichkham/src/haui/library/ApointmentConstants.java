@@ -26,6 +26,10 @@ public class ApointmentConstants {
 
 	// otp time out
 	public static final int OTP_TIMEOUT;
+	
+	
+	//view value
+	public static int[] VIEW_VALUES = {1, 2, 3, 4, 5, 10, 15, 20, 30, 50, 80, 100, 120};
 
 	static {
 

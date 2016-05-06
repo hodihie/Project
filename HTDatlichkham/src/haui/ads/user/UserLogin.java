@@ -74,11 +74,11 @@ public class UserLogin
 
     out.print("<tr><th colspan=2>Đăng nhập</th></tr>");
     out.print("<tr>");
-    out.print("<td class=\"lc\">Tên đăng nhập</td>");
+    out.print("<td class=\"lc\"><img src=\"/adv/imgs/icons/user.png\" class=\"icon\"/>Tên đăng nhập</td>");
     out.print("<td><input type=\"text\" name=\"txtUserName\"/></td>");
     out.print("</tr>");
     out.print("<tr>");
-    out.print("<td class=\"lc\">Mật khẩu</td>");
+    out.print("<td class=\"lc\"><img src=\"/adv/imgs/icons/password.png\" class=\"icon\"/>Mật khẩu</td>");
     out.print("<td><input type=\"password\" name=\"txtUserPass\"/></td>");
     out.print("</tr>");
     out.print("<tr>");
@@ -153,7 +153,7 @@ public class UserLogin
           session.setAttribute("userLogined",user);
 
           //tro ve giao dien chinh
-          response.sendRedirect("/adv/view");
+          response.sendRedirect("/adv/statistic/view");
 
         }else{
           response.sendRedirect("/adv/user/login?err=notok");

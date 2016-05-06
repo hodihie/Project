@@ -222,41 +222,17 @@ public class UserImpl extends BasicImpl implements User {
 	 * @see haui.ads.user.User#getUsers(haui.objects.UserObject, int, byte)
 	 */
 	@Override
-	public ResultSet getUsers(UserObject similar, int at, byte total) {
-		String sql = "SELECT * FROM tbluser ";
-
-		// ko hien thi user co quyen cao hon user dang dang nhap
-		String conds = MakeConditions.createCondition(similar);
-		if (!conds.equalsIgnoreCase("")) {
-			sql += " WHERE " + conds + " ";
+	public ResultSet[] getUsers(UserObject similar, int at, byte totalperpage) {
+		String conditions = MakeConditions.createCondition(similar);
+		if (!conditions.equalsIgnoreCase("")) {
+			conditions = " WHERE " + conditions;
 		}
 
-		sql += " ORDER BY user_name ASC ";
-		sql += " LIMIT " + at + ", " + total;
-
-		return this.gets(sql);
-	}
-
-	public static void main(String[] args) {
-		ConnectionPool cp = new ConnectionPoolImpl();
-		User u = new UserImpl(cp);
-
-		ResultSet rs = u.getUsers(null, 0, (byte) 15);
-		u.releaseConnection();
-
-		try {
-			while (rs.next()) {
-				System.out.print(rs.getInt("user_id") + "\t");
-				System.out.print(rs.getString("user_name") + "\t");
-				System.out.print(rs.getString("user_pass") + "\t");
-				System.out.print(rs.getString("user_fullname") + "\t");
-				System.out.println(rs.getString("user_email") + "\t");
-
-			}
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
+		String sql = "SELECT * FROM tbluser " + conditions + " ORDER BY user_name" + " LIMIT " + at + ", "
+				+ totalperpage;
+		String sqlTotal = "SELECT COUNT(user_id) AS total FROM tbluser " + conditions;
+		String[] sqlGets = { sql, sqlTotal };
+		return this.gets(sqlGets, 0);
 	}
 
 }

@@ -38,7 +38,7 @@ public class ApointmentLibrary {
 			tmp += "<td>" + item.getApointment_symptom() + "</td>";
 
 			tmp += "<td class=ED><a href=\"/adv/apointment/del?id=" + item.getApointment_id()
-					+ "\"  onclick=\"if(!confirm('Bạn có muốn xóa bản ghi này không?')) return false;\" >Xóa</a></td>";
+					+ "\"  onclick=\"if(!confirm('Bạn có muốn xóa bản ghi này không?')) return false;\" ><img src=\"/adv/imgs/icons/delete.png\" class=\"icon\"></a></td>";
 
 			tmp += "<td class=ID>" + item.getApointment_id() + "</td>";
 			tmp += "</tr>";

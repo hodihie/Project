@@ -34,8 +34,8 @@ public class ConnectionPoolImpl implements ConnectionPool {
 	public ConnectionPoolImpl() {
 		// xac dinh tai khoan truy cap
 		this.username = "root";
-		//this.userpass = "123456";
-		this.userpass = "5JN4IcIzCL";
+		this.userpass = "123456";
+		//this.userpass = "5JN4IcIzCL";
 
 		// xac dinh trinh dieu khien
 		this.driver = "com.mysql.jdbc.Driver";
@@ -44,8 +44,8 @@ public class ConnectionPoolImpl implements ConnectionPool {
 		this.loadDriver();
 
 		// xac dinh duong dan
-		//this.url = "jdbc:mysql://localhost:3306/htdatlichkham_data";		
-		this.url = "jdbc:mysql://mysql32815-datlichkham.jelastic.skali.net/htdatlichkham_data";
+		this.url = "jdbc:mysql://localhost:3306/htdatlichkham_data";		
+		//this.url = "jdbc:mysql://mysql32815-datlichkham.jelastic.skali.net/htdatlichkham_data";
 
 		// khoi tao doi tuong luu tru ket noi
 		this.pool = new Stack<>();
